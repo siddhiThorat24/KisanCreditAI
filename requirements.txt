@@ -1,9 +1,8 @@
-groq
-google-generativeai
-chromadb
-sentence-transformers
 flask
 flask-cors
+groq
 pandas
 numpy
-langchain
+scikit-learn
+joblib
+gunicorn

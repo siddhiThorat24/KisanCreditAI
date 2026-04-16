@@ -247,4 +247,4 @@ def dsample():
 if __name__ == "__main__":
     print("KisanCredit AI API  →  http://localhost:5000")
     print("Chatbot endpoint    →  POST http://localhost:5000/api/chat")
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)

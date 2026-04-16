@@ -1,0 +1,48 @@
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── Virtual environments ───────────────────────────────────────
+farmer_ai_env/
+.venv/
+venv/
+env/
+
+# ── Jupyter / IPython ─────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Version control ───────────────────────────────────────────
+.git/
+.gitignore
+
+# ── OS / Editor artefacts ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ── Tests ─────────────────────────────────────────────────────
+tests/
+*.test.py
+pytest_cache/
+.coverage
+htmlcov/
+
+# ── Docker build artefacts ────────────────────────────────────
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# ── Secrets / local config ────────────────────────────────────
+.env
+*.env*
+secrets/

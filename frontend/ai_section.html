@@ -1,0 +1,463 @@
+<!--
+  ══════════════════════════════════════════════════════
+  KisanCredit AI — Enhanced Chat UI (Drop-in Replacement)
+  Replace the existing <!-- ══ AI ASSISTANT ══ --> section
+  in your index.html with this block.
+  
+  Features:
+  ✅ Speech-to-Text (Web Speech API — free, no API key)
+  ✅ Multilingual: English / Hindi / Marathi
+  ✅ Language switcher with quick suggestion chips
+  ✅ Claude AI API integration (via backend /api/chat)
+  ✅ Rich markdown rendering
+  ✅ Typing animation
+  ✅ Reset / clear conversation
+  ══════════════════════════════════════════════════════
+-->
+
+<!-- ══ AI ASSISTANT ══ -->
+<div class="pg" id="pg-ai">
+  <div class="pgh">
+    <div class="pgt">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+      KisanCredit AI Assistant
+    </div>
+    <div class="pgst">Powered by Claude AI · Supports English / हिंदी / मराठी · Speech Input</div>
+  </div>
+
+  <!-- Language Selector -->
+  <div id="lang-bar" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+    <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3)">Language:</span>
+    <button class="lang-btn active" id="lang-en" onclick="setLang('en')" title="English">🇬🇧 English</button>
+    <button class="lang-btn" id="lang-hi" onclick="setLang('hi')" title="Hindi">🇮🇳 हिंदी</button>
+    <button class="lang-btn" id="lang-mr" onclick="setLang('mr')" title="Marathi">🟠 मराठी</button>
+    <div style="margin-left:auto;display:flex;gap:6px">
+      <button class="ib" title="Clear Chat" onclick="resetChat()" style="font-size:10px;padding:5px 8px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.27"/></svg>
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- Suggestion Chips -->
+  <div id="ch-sugg" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px"></div>
+
+  <!-- Chat Messages -->
+  <div id="ch-msgs" style="flex:1;overflow-y:auto;padding:4px 0;min-height:320px;max-height:420px;scroll-behavior:smooth"></div>
+
+  <!-- Input Row -->
+  <div style="display:flex;gap:8px;align-items:center;margin-top:12px;border-top:1px solid var(--bd);padding-top:12px">
+    <!-- Mic Button -->
+    <button id="mic-btn" onclick="toggleSpeech()" title="Speak your question" style="
+      width:40px;height:40px;border-radius:50%;border:2px solid var(--bd);background:var(--s2);
+      cursor:pointer;display:flex;align-items:center;justify-content:center;
+      color:var(--t2);transition:all .2s;flex-shrink:0;
+    ">
+      <svg id="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+    </button>
+
+    <!-- Text Input -->
+    <input
+      id="ci"
+      type="text"
+      placeholder="Ask in English, हिंदी, or मराठी..."
+      style="flex:1;background:var(--s2);border:1px solid var(--bd);color:var(--t1);
+             padding:10px 14px;border-radius:var(--rr);font-size:14px;font-family:inherit;
+             outline:none;transition:border .2s"
+      onkeydown="if(event.key==='Enter')sendChat()"
+      oninput="autoDetectInputLang(this.value)"
+    >
+
+    <!-- Send Button -->
+    <button onclick="sendChat()" style="
+      background:var(--g4);color:#fff;border:none;border-radius:var(--rr);
+      padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;
+      display:flex;align-items:center;gap:6px;white-space:nowrap;transition:opacity .2s;
+    " onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      Send
+    </button>
+  </div>
+
+  <!-- Mic status -->
+  <div id="mic-status" style="font-size:11px;color:var(--t3);margin-top:6px;min-height:16px;text-align:center"></div>
+</div>
+
+<!-- ══ INLINE STYLES for AI chat (add to your styles.css) ══ -->
+<style>
+.lang-btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--bd);
+  background: var(--s2);
+  color: var(--t2);
+  cursor: pointer;
+  transition: all .2s;
+  letter-spacing: .02em;
+}
+.lang-btn.active {
+  background: var(--g4);
+  color: #fff;
+  border-color: var(--g4);
+}
+.lang-btn:hover:not(.active) {
+  border-color: var(--g4);
+  color: var(--g4);
+}
+
+.sugg-chip {
+  font-size: 11.5px;
+  padding: 5px 11px;
+  border-radius: 16px;
+  border: 1.5px solid var(--bd);
+  background: var(--s2);
+  color: var(--t2);
+  cursor: pointer;
+  transition: all .18s;
+  white-space: nowrap;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sugg-chip:hover {
+  border-color: var(--g3);
+  color: var(--g3);
+  background: rgba(52,168,83,.07);
+}
+
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234,67,53,.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(234,67,53,0); }
+}
+#mic-btn.listening {
+  border-color: #ea4335;
+  color: #ea4335;
+  animation: mic-pulse 1.2s infinite;
+}
+
+@keyframes typing-dot {
+  0%,80%,100% { opacity: .2; transform: translateY(0); }
+  40%         { opacity: 1;  transform: translateY(-4px); }
+}
+.typing-dot {
+  display:inline-block;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--t3);margin:0 2px;
+  animation: typing-dot 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay:.2s; }
+.typing-dot:nth-child(3) { animation-delay:.4s; }
+</style>
+
+<!-- ══ AI CHAT JAVASCRIPT (replaces old sendChat / localAnswer) ══ -->
+<script>
+// ─── State ─────────────────────────────────────────────────────────────────
+let currentLang = 'en';
+let speechRecognition = null;
+let isListening = false;
+
+const LANG_LABELS = { en: 'English', hi: 'हिंदी', mr: 'मराठी' };
+
+// ─── Suggestion chips per language ─────────────────────────────────────────
+const SUGGESTIONS = {
+  en: [
+    "What is Kisan Credit Card (KCC)?",
+    "How to apply for PM Kisan?",
+    "What is PMFBY crop insurance?",
+    "Documents needed for farm loan?",
+    "How to improve credit history?",
+    "Which crops have lowest risk?",
+    "Interest rate on KCC?",
+  ],
+  hi: [
+    "किसान क्रेडिट कार्ड क्या है?",
+    "PM किसान के लिए कैसे आवेदन करें?",
+    "PMFBY फसल बीमा क्या है?",
+    "लोन के लिए कौन से दस्तावेज चाहिए?",
+    "क्रेडिट इतिहास कैसे सुधारें?",
+    "KCC पर ब्याज दर क्या है?",
+  ],
+  mr: [
+    "किसान क्रेडिट कार्ड म्हणजे काय?",
+    "PM किसान साठी अर्ज कसा करावा?",
+    "PMFBY पीक विमा म्हणजे काय?",
+    "कर्जासाठी कोणती कागदपत्रे लागतात?",
+    "पत इतिहास कसा सुधारायचा?",
+    "KCC वर व्याज दर किती?",
+  ],
+};
+
+// ─── Local knowledge base fallback ─────────────────────────────────────────
+function localAnswer(q) {
+  const t = q.toLowerCase();
+  const dev = /[\u0900-\u097F]/.test(q);
+
+  // KCC
+  if (/kcc|kisan credit card|किसान क्रेडिट कार्ड|किसान क्रेडिट/.test(t))
+    return `💳 **Kisan Credit Card (KCC)**\n\n• Credit limit: up to **₹3 lakh** at just **4% interest** per year\n• No collateral required up to ₹1.6 lakh\n• Valid 5 years, renewed annually\n• Apply at any nationalised bank or visit **pmkisan.gov.in**\n\n**हिंदी:** KCC से ₹3 लाख तक 4% ब्याज पर। बिना गारंटी ₹1.6 लाख तक।\n**मराठी:** KCC द्वारे ₹3 लाखांपर्यंत 4% व्याजावर.`;
+
+  // PM Kisan
+  if (/pm.?kisan|samman nidhi|किसान सम्मान|पीएम किसान/.test(t))
+    return `🌱 **PM Kisan Samman Nidhi**\n\n• ₹6,000 per year in **3 instalments of ₹2,000**\n• Directly credited to your bank account\n• All landholding farmer families are eligible\n\n📝 Register at **pmkisan.gov.in** or nearest CSC\n📞 Helpline: **155261** (free)\n\n**हिंदी:** PM किसान: ₹6000/साल, 3 किश्तों में। pmkisan.gov.in पर पंजीकरण।`;
+
+  // PMFBY
+  if (/pmfby|fasal bima|crop insur|फसल बीमा|पीक विमा/.test(t))
+    return `🌾 **PMFBY — Pradhan Mantri Fasal Bima Yojana**\n\n• Crop insurance at low premiums:\n  — Kharif crops: **2%** premium\n  — Rabi crops: **1.5%** premium\n• Covers: flood, drought, hailstorm, pest attacks\n• Apply at bank, CSC, or **pmfby.gov.in**\n📞 Helpline: **14447**\n\n**मराठी:** PMFBY: खरीप 2%, रब्बी 1.5% हप्ता. पूर, दुष्काळ, गारपीटपासून संरक्षण.`;
+
+  // Credit history
+  if (/credit|cibil|क्रेडिट|सिबिल/.test(t))
+    return `**Credit History** is the **#1 factor** (38% weight) in loan approval.\n\n• Good record → **87% approval rate**\n• Poor record → only **14% approval rate**\n\n💡 **Tips:** Clear all dues before applying. Maintain clean repayment for 6–12 months. Get free CIBIL report at **cibil.com**\n\n**हिंदी:** क्रेडिट इतिहास सबसे महत्वपूर्ण (38%)। साफ रिकॉर्ड से 87% मंजूरी।`;
+
+  // Documents
+  if (/document|paper|aadhaar|aadhar|satbara|कागज|दस्तावेज|कागदपत्र|सातबारा/.test(t))
+    return `📋 **Documents for Farm Loan:**\n\n✅ **Identity:** Aadhaar (mandatory), PAN card\n✅ **Land:** 7/12 Extract (Satbara), Mutation register\n✅ **Bank:** Last 6 months statements, Passbook\n✅ **Income:** Certificate from Tehsildar\n✅ **Photos:** 2–4 passport-size\n\n**मराठी:** आधार, सातबारा उतारा, बँक पासबुक, उत्पन्नाचा दाखला, फोटो.`;
+
+  // Schemes general
+  if (/scheme|govern|yojana|योजना|सरकार|सरकारी/.test(t))
+    return `🏛️ **Government Schemes for Farmers:**\n\n• **PM Kisan** — ₹6,000/year direct transfer\n• **KCC** — ₹3 lakh credit at 4% interest\n• **PMFBY** — Crop insurance (2% premium)\n• **PM Kisan Mandhan** — ₹3,000/month pension at 60\n• **Soil Health Card** — Free soil testing\n• **NABARD** — Rural infrastructure loans\n\n📞 PM Kisan: **155261** | PMFBY: **14447** | NABARD: **1800-22-0000**`;
+
+  // Income
+  if (/income|salary|आय|उत्पन्न|वेतन/.test(t))
+    return `**Income** is 2nd most important factor (~20% weight).\n\n• Combined income > ₹6,000/month → **81% approval rate**\n• Include all sources: farming + dairy + other\n• Add spouse/parent as co-applicant to boost total\n\n**हिंदी:** ₹6,000/माह से अधिक संयुक्त आय से 81% मंजूरी। सह-आवेदक जोड़ें।`;
+
+  // Interest rate
+  if (/interest|rate|ब्याज|व्याज/.test(t))
+    return `💹 **Farm Loan Interest Rates:**\n\n| Loan Type | Rate |\n|---|---|\n| KCC (Kisan Credit Card) | **4% p.a.** |\n| Agricultural term loans | 7–9% |\n| Cooperative bank loans | 5–7% |\n| Microfinance / SHG | 10–14% |\n\n💡 Always prefer nationalised bank → cooperative → private lenders.\n\n**हिंदी:** KCC पर केवल 4% ब्याज। हमेशा राष्ट्रीय बैंक को प्राथमिकता दें।`;
+
+  // Crop
+  if (/crop|wheat|rice|cotton|soy|फसल|पीक|गेहूं|कापूस/.test(t))
+    return `🌾 **Crop Risk Profile:**\n\n| Crop | Risk Level | Season |\n|---|---|---|\n| Wheat | Low ✅ | Rabi |\n| Sugarcane | Low ✅ | Kharif/Rabi |\n| Rice/Paddy | Medium | Kharif |\n| Soybean | High ⚠️ | Kharif |\n| Cotton | High ⚠️ | Kharif |\n\n💡 Insure high-risk crops with PMFBY!\n\n**हिंदी:** गेहूं और गन्ना कम जोखिम। कपास और सोयाबीन उच्च जोखिम।`;
+
+  // Approval
+  if (/approv|eligib|qualify|मंजूरी|पात्रता/.test(t))
+    return `✅ **Loan Approval Checklist:**\n\n1. 🏆 Clean credit history (38% weight)\n2. 💰 Combined income > ₹4,000/month (20%)\n3. 📋 Reasonable loan amount — DTI < 0.4\n4. 🎓 Graduate education (8%)\n5. 🏘️ Semiurban area preferred (76.3% approval)\n\n**हिंदी:** साफ क्रेडिट, अच्छी आय, उचित राशि — ये तीन सबसे जरूरी।`;
+
+  // Rejection
+  if (/reject|denied|नामंजूर|नाकारल/.test(t))
+    return `😟 **If your loan is rejected:**\n\n🏛️ **Apply for these instead:**\n• **KCC** — ₹3 lakh at 4% (easier eligibility)\n• **PM Kisan** — ₹6,000/year (no loan)\n• **SHG micro-credit** — via Self-Help Group\n• **PM SVANidhi** — ₹10K–50K micro loans\n\n📈 **Reapply after 6 months:** Clear dues, add co-applicant, reduce loan amount.\n\n**हिंदी:** अस्वीकृति पर KCC, PM किसान, SHG के लिए आवेदन करें।`;
+
+  // Weather
+  if (/weather|flood|drought|monsoon|मौसम|बाढ|सूखा|पाऊस|दुष्काळ/.test(t))
+    return `🌦️ **Weather Risk in Farm Loans:**\n\n• **Drought** → +18–25% default risk (cotton/soybean worst)\n• **Flood** → +15% risk premium per RBI norms\n• **Heat >40°C** → crop yield drops 30–40%\n• **Irregular monsoon** → higher defaults in Maharashtra\n\n🛡️ **Protection:** Buy **PMFBY** crop insurance!\n📞 Helpline: **14447**\n\n**मराठी:** दुष्काळ, पूर — PMFBY विमा आवश्यक आहे.`;
+
+  return `🙏 I'm KisanCredit AI — here to help Indian farmers with loans and government schemes.\n\nYou can ask me about:\n• 💳 **Kisan Credit Card (KCC)**\n• 🌱 **PM Kisan Samman Nidhi**\n• 🌾 **PMFBY Crop Insurance**\n• 📋 **Loan Documents & Eligibility**\n• 🌦️ **Crop & Weather Risk**\n\n*आप हिंदी या मराठी में भी पूछ सकते हैं!*`;
+}
+
+// ─── UI Helpers ─────────────────────────────────────────────────────────────
+function renderMd(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--g3)">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/`(.*?)`/g, '<code style="background:var(--s3);padding:1px 5px;border-radius:3px;font-size:12px">$1</code>')
+    .replace(/\n\|(.+)\|\n\|[-| ]+\|\n((?:\|.+\|\n?)*)/g, (_, h, rows) => {
+      const headers = h.split('|').filter(Boolean).map(c => `<th style="padding:5px 10px;text-align:left;font-size:12px">${c.trim()}</th>`).join('');
+      const rowsHtml = rows.trim().split('\n').map(row => {
+        const cells = row.split('|').filter(Boolean).map(c => `<td style="padding:4px 10px;font-size:12px;border-top:1px solid var(--bd)">${c.trim()}</td>`).join('');
+        return `<tr>${cells}</tr>`;
+      }).join('');
+      return `<table style="border-collapse:collapse;margin:8px 0;width:100%"><thead><tr style="background:var(--s3)">${headers}</tr></thead><tbody>${rowsHtml}</tbody></table>`;
+    })
+    .replace(/\n/g, '<br>');
+}
+
+function addBubble(html, role) {
+  const msgs = document.getElementById('ch-msgs');
+  const isAI = role === 'ai';
+  const el   = document.createElement('div');
+  el.style.cssText = `display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;${isAI ? '' : 'flex-direction:row-reverse'}`;
+  el.innerHTML = `
+    <div style="width:34px;height:34px;border-radius:50%;background:${isAI ? 'var(--g4)' : 'var(--s3)'};flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px">${isAI ? '🤖' : '👨‍🌾'}</div>
+    <div style="flex:1;max-width:78%">
+      <div style="background:${isAI ? 'var(--s2)' : 'var(--g6)'};padding:11px 15px;border-radius:var(--rr);font-size:13.5px;line-height:1.65;border:1px solid ${isAI ? 'var(--bd)' : 'var(--bd2)'}">${html}</div>
+    </div>`;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  return el;
+}
+
+function addTypingIndicator() {
+  return addBubble('<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>', 'ai');
+}
+
+// ─── Language Management ─────────────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('lang-' + lang)?.classList.add('active');
+  renderSuggestions();
+  // Update mic language
+  if (speechRecognition) {
+    speechRecognition.lang = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' }[lang] || 'en-IN';
+  }
+  // Update placeholder
+  const placeholders = {
+    en: 'Ask in English, हिंदी, or मराठी...',
+    hi: 'हिंदी, English या मराठी में पूछें...',
+    mr: 'मराठी, हिंदी किंवा English मध्ये विचारा...',
+  };
+  document.getElementById('ci').placeholder = placeholders[lang] || placeholders.en;
+}
+
+function autoDetectInputLang(text) {
+  if (!text || text.length < 3) return;
+  const dev = /[\u0900-\u097F]/.test(text);
+  if (!dev) { if (currentLang !== 'en') setLang('en'); return; }
+  const mrScore = ['आहे','नाही','करा','मला','सांगा','कसा','काय'].filter(m => text.includes(m)).length;
+  const hiScore = ['है','हैं','नहीं','करें','मुझे','बताएं','क्या'].filter(m => text.includes(m)).length;
+  const detected = mrScore > hiScore ? 'mr' : 'hi';
+  if (detected !== currentLang) setLang(detected);
+}
+
+function renderSuggestions() {
+  const el   = document.getElementById('ch-sugg');
+  const list = SUGGESTIONS[currentLang] || SUGGESTIONS.en;
+  el.innerHTML = list.map(s =>
+    `<button class="sugg-chip" onclick="askQ(this.textContent)" title="${s}">${s}</button>`
+  ).join('');
+}
+
+// ─── Chat Logic ──────────────────────────────────────────────────────────────
+async function sendChat() {
+  const ci  = document.getElementById('ci');
+  const msg = ci.value.trim();
+  if (!msg) return;
+  ci.value = '';
+  autoDetectInputLang(msg);
+
+  addBubble(msg, 'user');
+  const typing = addTypingIndicator();
+
+  let reply = null;
+  try {
+    const res = await fetch('/api/chat', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ message: msg, language: currentLang }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      reply = data.reply || null;
+      // Auto-switch language chip if server detected differently
+      if (data.language && data.language !== currentLang) setLang(data.language);
+    }
+  } catch (_) { /* server offline — use local KB */ }
+
+  typing.remove();
+
+  const finalReply = (typeof reply === 'string' && reply.length > 0)
+    ? reply
+    : localAnswer(msg);
+
+  addBubble(renderMd(finalReply), 'ai');
+}
+
+function askQ(q) {
+  document.getElementById('ci').value = q;
+  sendChat();
+}
+
+async function resetChat() {
+  document.getElementById('ch-msgs').innerHTML = '';
+  try { await fetch('/api/chat/reset', { method: 'POST' }); } catch (_) {}
+  setTimeout(() => addBubble(renderMd(
+    '🙏 Namaste! I\'m **KisanCredit AI**. How can I help you today?\n\n' +
+    '*You can ask in English, हिंदी, or मराठी!*\n' +
+    '*Speech input available — click the 🎙️ mic button!*'
+  ), 'ai'), 200);
+}
+
+// ─── Speech-to-Text ──────────────────────────────────────────────────────────
+function setupSpeech() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    document.getElementById('mic-btn').style.opacity = '.4';
+    document.getElementById('mic-btn').title = 'Speech not supported in this browser';
+    document.getElementById('mic-status').textContent = '⚠️ Speech input not supported. Use Chrome for best results.';
+    return;
+  }
+
+  const rec = new SpeechRecognition();
+  rec.continuous   = false;
+  rec.interimResults = true;
+  rec.lang = 'hi-IN';   // default; changes with language switcher
+
+  rec.onstart = () => {
+    isListening = true;
+    document.getElementById('mic-btn').classList.add('listening');
+    document.getElementById('mic-status').textContent = '🎙️ Listening... Speak now';
+  };
+
+  rec.onresult = (e) => {
+    const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
+    document.getElementById('ci').value = transcript;
+    autoDetectInputLang(transcript);
+    if (e.results[0].isFinal) {
+      document.getElementById('mic-status').textContent = '✅ Recognised: "' + transcript + '"';
+    }
+  };
+
+  rec.onerror = (e) => {
+    document.getElementById('mic-status').textContent = '❌ Error: ' + e.error + '. Try again.';
+    stopListening();
+  };
+
+  rec.onend = () => {
+    stopListening();
+    const val = document.getElementById('ci').value.trim();
+    if (val) {
+      setTimeout(() => {
+        document.getElementById('mic-status').textContent = '';
+        sendChat();
+      }, 400);
+    }
+  };
+
+  speechRecognition = rec;
+}
+
+function toggleSpeech() {
+  if (!speechRecognition) { setupSpeech(); }
+  if (!speechRecognition) return;
+
+  if (isListening) {
+    speechRecognition.stop();
+  } else {
+    speechRecognition.lang = { en: 'en-IN', hi: 'hi-IN', mr: 'mr-IN' }[currentLang] || 'hi-IN';
+    document.getElementById('ci').value = '';
+    speechRecognition.start();
+  }
+}
+
+function stopListening() {
+  isListening = false;
+  document.getElementById('mic-btn').classList.remove('listening');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+(function init() {
+  renderSuggestions();
+  setupSpeech();
+  setTimeout(() => {
+    if (document.getElementById('ch-msgs').children.length === 0) {
+      addBubble(renderMd(
+        '🙏 Namaste! I\'m **KisanCredit AI Assistant**.\n\n' +
+        'I can help you with:\n' +
+        '• 💳 **Kisan Credit Card (KCC)** — ₹3 lakh at 4% interest\n' +
+        '• 🌱 **PM Kisan** — ₹6,000/year direct transfer\n' +
+        '• 🌾 **PMFBY Crop Insurance** — 2% premium for kharif\n' +
+        '• 📋 **Loan eligibility & documents**\n' +
+        '• 🌦️ **Crop & weather risk**\n\n' +
+        '💬 Ask in **English**, **हिंदी**, or **मराठी**!\n' +
+        '🎙️ Click the **mic button** to speak your question!'
+      ), 'ai');
+    }
+  }, 500);
+})();
+</script>

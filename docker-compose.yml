@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────
+#  KisanCredit AI  —  docker-compose.yml
+#  Run everything with:  docker-compose up --build
+# ─────────────────────────────────────────────────────────────
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kisancredit-api
+    image: kisancredit-ai:latest
+
+    # ── Port mapping ─────────────────────────────────────────
+    ports:
+      - "5000:5000"
+
+    # ── Environment variables ────────────────────────────────
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-kisancredit-dev-secret}
+      - GROQ_API_KEY=${GROQ_API_KEY:-}          # optional — chatbot falls back to rules
+
+    # ── Mount volumes for live data & model updates ──────────
+    volumes:
+      - ./data:/app/data          # dataset CSV
+      - ./models:/app/models      # trained model .pkl files
+      - ./outputs:/app/outputs    # plots & results JSON
+
+    # ── Health check ─────────────────────────────────────────
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:5000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    # ── Restart policy ───────────────────────────────────────
+    restart: unless-stopped

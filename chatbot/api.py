@@ -1,44 +1,36 @@
 """
 chatbot/api.py
-Flask Blueprint that exposes the chatbot as REST endpoints.
-Mount this in backend/app.py using app.register_blueprint(chatbot_bp).
+Flask Blueprint for KisanCredit AI chatbot REST API.
+Mount using: app.register_blueprint(chatbot_bp)
 
 Endpoints:
-POST /api/chat            — send a message, get a reply
-GET  /api/chat/suggestions — get suggested questions
-POST /api/chat/reset       — clear conversation history
-GET  /api/chat/history     — retrieve full conversation history
+  POST /api/chat              — send a message, get a reply
+  GET  /api/chat/suggestions  — get suggested questions (language-aware)
+  POST /api/chat/reset        — clear conversation history
+  GET  /api/chat/history      — retrieve full conversation history
+  POST /api/chat/transcribe   — speech-to-text via Web Speech API helper
+  GET  /api/chat/languages    — list supported languages
 """
 
 from flask import Blueprint, request, jsonify, session
-from chatbot.chatbot import KisanChatbot
+from chatbot.chatbot import KisanChatbot, detect_language
 
 chatbot_bp = Blueprint("chatbot", __name__)
 
-# One chatbot instance per Flask session (keyed by session ID).
-# For simplicity with stateless APIs a single global instance works fine
-# for single-user / demo usage. For multi-user production use a dict
-# keyed on session["user_id"] or a request header token.
+# Global instance (single-user / demo). For multi-user, key by session["user_id"].
 _bot = KisanChatbot()
 
 
 # ── HELPERS ────────────────────────────────────────────────────────────────────
 
-def _bot_for_session() -> KisanChatbot:
-    """
-    Return the chatbot instance for the current session.
-    Falls back to the global instance when sessions are not configured.
-    """
+def _get_bot() -> KisanChatbot:
+    """Return the chatbot instance. Falls back to global for single-user demo."""
     try:
-        uid = session.get("chat_id")
-        if uid is None:
+        if "chat_id" not in session:
             import uuid
             session["chat_id"] = str(uuid.uuid4())
-        # For a production multi-user app, maintain a dict of bots here.
-        # For a single-user demo the global _bot is fine.
-        return _bot
+        return _bot   # Swap for per-session dict in multi-user production
     except RuntimeError:
-        # Outside of request context (e.g. tests)
         return _bot
 
 
@@ -47,35 +39,40 @@ def _bot_for_session() -> KisanChatbot:
 @chatbot_bp.route("/api/chat", methods=["POST"])
 def chat():
     """
-    Send a message to the chatbot.
+    Send a message and receive a response.
 
-    Request body (JSON):
-        { "message": "Your question here" }
+    Request JSON:
+        { "message": "Your question", "language": "en" }   ← language optional
 
-    Response (JSON):
+    Response JSON:
         {
-            "reply":      "...",
-            "intent":     "credit_history",
-            "confidence": 0.85,
+            "reply":       "...",
+            "intent":      "kcc",
+            "confidence":  0.85,
+            "language":    "en",
+            "source":      "rule",
             "history_len": 4
         }
     """
-    data = request.get_json(force=True) or {}
+    data    = request.get_json(force=True) or {}
     message = (data.get("message") or "").strip()
+    req_lang = data.get("language")
 
     if not message:
         return jsonify({"error": "Field 'message' is required."}), 400
 
-    if len(message) > 1000:
-        return jsonify({"error": "Message too long (max 1000 chars)."}), 400
+    if len(message) > 1500:
+        return jsonify({"error": "Message too long (max 1500 chars)."}), 400
 
-    bot = _bot_for_session()
-    result = bot.respond(message)
+    bot    = _get_bot()
+    result = bot.respond(message, force_language=req_lang)
 
     return jsonify({
         "reply":       result["reply"],
         "intent":      result["intent"],
         "confidence":  result["confidence"],
+        "language":    result["language"],
+        "source":      result["source"],
         "history_len": len(bot.get_history()),
     })
 
@@ -83,43 +80,65 @@ def chat():
 @chatbot_bp.route("/api/chat/suggestions", methods=["GET"])
 def suggestions():
     """
-    Get a list of suggested questions to show the user.
+    Get language-aware suggested questions.
 
-    Response (JSON):
-        { "suggestions": ["...", "..."] }
+    Query params:
+        ?lang=en | hi | mr   (optional, defaults to last detected language)
+
+    Response JSON:
+        { "suggestions": ["...", ...], "language": "hi" }
     """
-    bot = _bot_for_session()
-    return jsonify({"suggestions": bot.get_suggestions()})
+    bot  = _get_bot()
+    lang = request.args.get("lang") or bot.detected_language or "en"
+    return jsonify({
+        "suggestions": bot.get_suggestions(lang),
+        "language":    lang,
+    })
 
 
 @chatbot_bp.route("/api/chat/reset", methods=["POST"])
 def reset():
-    """
-    Clear the conversation history.
-
-    Response (JSON):
-        { "status": "ok", "message": "Conversation reset." }
-    """
-    bot = _bot_for_session()
-    bot.reset()
+    """Clear the conversation history."""
+    _get_bot().reset()
     return jsonify({"status": "ok", "message": "Conversation reset."})
 
 
 @chatbot_bp.route("/api/chat/history", methods=["GET"])
 def history():
-    """
-    Retrieve full conversation history.
-
-    Response (JSON):
-        {
-            "history": [
-                {"role": "user",      "content": "..."},
-                {"role": "assistant", "content": "..."},
-                ...
-            ],
-            "count": 4
-        }
-    """
-    bot = _bot_for_session()
+    """Return full conversation history."""
+    bot  = _get_bot()
     hist = bot.get_history()
     return jsonify({"history": hist, "count": len(hist)})
+
+
+@chatbot_bp.route("/api/chat/detect-language", methods=["POST"])
+def detect_lang_endpoint():
+    """
+    Detect language of a given text snippet.
+
+    Request JSON:
+        { "text": "..." }
+
+    Response JSON:
+        { "language": "hi", "label": "Hindi" }
+    """
+    data = request.get_json(force=True) or {}
+    text = (data.get("text") or "").strip()
+    if not text:
+        return jsonify({"error": "Field 'text' is required."}), 400
+
+    lang   = detect_language(text)
+    labels = {"en": "English", "hi": "Hindi (हिंदी)", "mr": "Marathi (मराठी)"}
+    return jsonify({"language": lang, "label": labels.get(lang, "Unknown")})
+
+
+@chatbot_bp.route("/api/chat/languages", methods=["GET"])
+def languages():
+    """List all supported languages."""
+    return jsonify({
+        "languages": [
+            {"code": "en", "label": "English",        "native": "English"},
+            {"code": "hi", "label": "Hindi",          "native": "हिंदी"},
+            {"code": "mr", "label": "Marathi",        "native": "मराठी"},
+        ]
+    })
