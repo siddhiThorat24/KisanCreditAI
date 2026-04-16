@@ -1,0 +1,615 @@
+Loan_ID,Applicant_Name,Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,Property_Area,Loan_Status
+LP000001,Baburao Chavan,Male,No,0,Graduate,No,2877.0,548.0,129.0,,1.0,Semiurban,Y
+LP000002,Balaji Sutar,Male,No,0,Graduate,No,3184.0,2501.0,227.0,360.0,1.0,Rural,N
+LP000003,Sushila Yadav,Female,Yes,1,Graduate,No,7973.0,0.0,30.0,360.0,0.0,Urban,N
+LP000004,Vishal Londhe,Male,Yes,0,Graduate,No,2286.0,0.0,,360.0,1.0,Semiurban,N
+LP000005,Ravi Mishra,Male,No,1,Not Graduate,Yes,14034.0,0.0,263.0,480.0,0.0,Urban,N
+LP000006,Sona Gaikwad,Female,Yes,2,Not Graduate,No,1550.0,0.0,379.0,360.0,1.0,Urban,N
+LP000007,Nilesh Dalvi,Male,Yes,0,Not Graduate,No,12876.0,1518.0,203.0,360.0,1.0,Semiurban,Y
+LP000008,Devidas Bhalerao,Male,Yes,0,Graduate,No,1935.0,0.0,343.0,360.0,0.0,Semiurban,N
+LP000009,Kiran More,Male,No,0,Graduate,No,4021.0,4700.0,149.0,360.0,1.0,Rural,Y
+LP000010,Sachin Kale,Male,Yes,3+,Graduate,Yes,2827.0,1844.0,136.0,360.0,1.0,Urban,Y
+LP000011,Ganesh Jadhav,Male,No,1,Not Graduate,No,3142.0,810.0,181.0,360.0,1.0,Rural,N
+LP000012,Pushpa Verma,Female,No,0,Graduate,No,7165.0,831.0,135.0,180.0,1.0,Semiurban,Y
+LP000013,Sanjay Joshi,Male,Yes,0,Graduate,No,11848.0,0.0,88.0,240.0,1.0,Semiurban,Y
+LP000014,Rekha Kumari,Female,No,0,Graduate,No,9482.0,0.0,102.0,360.0,1.0,Rural,Y
+LP000015,Rajaram Thorat,Male,Yes,0,Graduate,No,3006.0,0.0,74.0,360.0,1.0,Semiurban,Y
+LP000016,Kedar Deshpande,Male,Yes,3+,Graduate,Yes,4595.0,2733.0,181.0,480.0,1.0,Semiurban,Y
+LP000017,Kiran More,Male,Yes,1,Not Graduate,Yes,2291.0,0.0,136.0,360.0,1.0,Urban,Y
+LP000018,Balaji Sutar,Male,No,0,Not Graduate,No,1971.0,0.0,111.0,12.0,1.0,Urban,N
+LP000019,Sudha Sawant,Female,Yes,2,Not Graduate,No,1763.0,0.0,99.0,360.0,1.0,Rural,Y
+LP000020,Yogesh Kamble,Male,Yes,0,Graduate,No,2936.0,0.0,179.0,360.0,0.0,Semiurban,N
+LP000021,Dinesh Yadav,Male,Yes,2,Graduate,No,4816.0,2675.0,208.0,360.0,1.0,Urban,N
+LP000022,Santosh Shinde,Male,Yes,0,Graduate,No,1016.0,2679.0,73.0,360.0,1.0,Urban,Y
+LP000023,Meena Patil,Female,Yes,1,Graduate,No,3892.0,332.0,67.0,480.0,,Semiurban,Y
+LP000024,Vandana Wagh,Female,Yes,3+,Graduate,Yes,11987.0,1546.0,229.0,360.0,1.0,Semiurban,Y
+LP000025,Mahesh Sharma,Male,Yes,0,Graduate,No,9025.0,0.0,64.0,300.0,0.0,Urban,N
+LP000026,Devidas Bhalerao,Male,No,1,Graduate,No,2640.0,0.0,183.0,480.0,1.0,Semiurban,Y
+LP000027,Nitin Patel,Male,Yes,3+,Graduate,No,1472.0,1851.0,330.0,300.0,1.0,Semiurban,N
+LP000028,Vijay Gupta,Male,No,0,Graduate,No,5603.0,2945.0,330.0,,1.0,Rural,Y
+LP000029,Manoj Sawant,Male,Yes,0,Graduate,No,1000.0,1906.0,204.0,360.0,1.0,Urban,N
+LP000030,Sanjay Joshi,Male,No,1,Graduate,No,8949.0,0.0,200.0,360.0,1.0,Semiurban,Y
+LP000031,Deepak Verma,Male,Yes,0,Not Graduate,Yes,3450.0,3761.0,468.0,300.0,1.0,Urban,N
+LP000032,Sona Gaikwad,Female,Yes,0,Graduate,No,15041.0,0.0,38.0,360.0,1.0,Urban,Y
+LP000033,Amit Thakur,Male,No,0,Not Graduate,No,1160.0,0.0,105.0,360.0,0.0,Semiurban,N
+LP000034,Harish Nair,Male,Yes,2,Graduate,No,7794.0,284.0,216.0,360.0,1.0,Semiurban,Y
+LP000035,Ramesh Patil,Male,Yes,0,Graduate,Yes,3743.0,1462.0,113.0,360.0,1.0,Urban,Y
+LP000036,Rohit Kulkarni,Male,No,0,Graduate,No,3170.0,750.0,268.0,84.0,1.0,Rural,N
+LP000037,Nitin Patel,Male,No,2,Not Graduate,No,1501.0,2088.0,133.0,360.0,1.0,Urban,N
+LP000038,Mangesh Gaikwad,Male,Yes,0,Graduate,Yes,6179.0,0.0,,180.0,1.0,Semiurban,Y
+LP000039,Dinesh Yadav,Male,Yes,2,Graduate,No,6547.0,2842.0,117.0,120.0,1.0,Rural,Y
+LP000040,Dattatray Kadam,Male,No,0,Graduate,No,14549.0,4482.0,102.0,360.0,1.0,Semiurban,Y
+LP000041,Vijay Gupta,Male,No,3+,Graduate,No,8315.0,1777.0,100.0,180.0,1.0,Rural,Y
+LP000042,Mangala Borkar,Female,No,1,Graduate,Yes,2624.0,0.0,157.0,360.0,1.0,Semiurban,N
+LP000043,Ramesh Patil,Male,Yes,0,Graduate,No,1953.0,2103.0,89.0,360.0,0.0,Rural,N
+LP000044,Shivaji Bhosale,Male,No,2,Graduate,No,1502.0,0.0,229.0,360.0,,Semiurban,N
+LP000045,Vandana Wagh,Female,Yes,0,Graduate,No,11623.0,1255.0,194.0,360.0,0.0,Semiurban,N
+LP000046,Balaji Sutar,Male,No,0,Graduate,No,2298.0,1419.0,248.0,360.0,1.0,Urban,N
+LP000047,Dattatray Kadam,Male,Yes,0,Graduate,No,11682.0,2657.0,,360.0,1.0,Semiurban,Y
+LP000048,Balaji Sutar,Male,No,1,Not Graduate,No,5873.0,977.0,53.0,360.0,1.0,Urban,Y
+LP000049,Tushar Mane,Male,Yes,0,Not Graduate,No,5103.0,1490.0,135.0,360.0,1.0,Rural,Y
+LP000050,Balaji Sutar,Male,Yes,0,Graduate,No,3226.0,0.0,668.0,360.0,1.0,Urban,N
+LP000051,Rajesh Singh,Male,No,0,Graduate,Yes,6475.0,1351.0,272.0,360.0,1.0,Urban,Y
+LP000052,Sachin Kale,Male,Yes,0,Graduate,No,3979.0,3064.0,100.0,480.0,1.0,Rural,Y
+LP000053,Vitthal Mule,Male,No,0,Graduate,Yes,3085.0,2743.0,171.0,60.0,1.0,Urban,Y
+LP000054,Ganesh Jadhav,Male,Yes,0,Graduate,Yes,6642.0,3859.0,202.0,180.0,1.0,Urban,Y
+LP000055,Vitthal Mule,Male,Yes,0,Graduate,No,3628.0,1458.0,64.0,360.0,1.0,Semiurban,Y
+LP000056,Devidas Bhalerao,Male,Yes,0,Not Graduate,No,2265.0,3951.0,288.0,360.0,1.0,Urban,Y
+LP000057,Manoj Sawant,Male,Yes,1,Graduate,,6197.0,745.0,124.0,360.0,1.0,Urban,Y
+LP000058,Rohit Kulkarni,Male,Yes,0,Not Graduate,No,3843.0,0.0,129.0,60.0,1.0,Semiurban,Y
+LP000059,Dinesh Yadav,Male,Yes,1,Graduate,No,5722.0,0.0,137.0,120.0,1.0,Urban,Y
+LP000060,Rajaram Thorat,Male,Yes,0,Graduate,No,2902.0,1819.0,255.0,360.0,1.0,Urban,N
+LP000061,Mangesh Gaikwad,Male,No,0,Graduate,No,1685.0,0.0,90.0,360.0,1.0,Urban,Y
+LP000062,Harish Nair,Male,No,0,Graduate,Yes,14034.0,1222.0,53.0,480.0,1.0,Urban,Y
+LP000063,Pandurang Nale,Male,No,0,Graduate,No,12253.0,0.0,162.0,360.0,1.0,Urban,Y
+LP000064,Ravi Mishra,Male,Yes,0,Graduate,No,7603.0,1571.0,44.0,360.0,1.0,Urban,Y
+LP000065,Akshay Salve,Male,Yes,2,Graduate,No,3044.0,0.0,115.0,360.0,1.0,Semiurban,N
+LP000066,Manoj Sawant,Male,Yes,0,Graduate,No,3241.0,0.0,261.0,180.0,1.0,Semiurban,Y
+LP000067,Tushar Mane,Male,No,0,Graduate,No,10886.0,1278.0,187.0,360.0,1.0,Urban,Y
+LP000068,Suresh Kumar,Male,No,1,Graduate,No,3119.0,0.0,241.0,360.0,1.0,Urban,N
+LP000069,Tushar Mane,Male,Yes,0,Not Graduate,Yes,2552.0,0.0,191.0,360.0,1.0,Rural,Y
+LP000070,Nilesh Dalvi,Male,No,0,Graduate,No,15491.0,0.0,511.0,360.0,1.0,Semiurban,Y
+LP000071,Vitthal Mule,Male,Yes,0,Graduate,No,3888.0,0.0,98.0,60.0,1.0,Semiurban,Y
+LP000072,Amit Thakur,Male,Yes,0,Graduate,Yes,14375.0,1118.0,169.0,84.0,,Semiurban,Y
+LP000073,Priya Nair,Female,Yes,0,Graduate,Yes,1470.0,0.0,107.0,360.0,1.0,Urban,Y
+LP000074,Mahesh Sharma,Male,Yes,2,Not Graduate,No,5844.0,0.0,230.0,360.0,1.0,Rural,Y
+LP000075,Vijay Gupta,Male,No,3+,Graduate,No,17875.0,4550.0,131.0,480.0,1.0,Rural,Y
+LP000076,Vikram Desai,Male,No,0,Graduate,No,4111.0,4502.0,349.0,180.0,1.0,Rural,Y
+LP000077,Balaji Sutar,Male,Yes,1,Graduate,No,3327.0,1875.0,101.0,360.0,1.0,Urban,Y
+LP000078,Ravi Mishra,Male,Yes,2,Graduate,No,1736.0,0.0,294.0,360.0,1.0,Urban,Y
+LP000079,Vijay Gupta,Male,No,0,Graduate,No,8772.0,8008.0,188.0,360.0,,Urban,Y
+LP000080,Suresh Kumar,Male,No,2,Graduate,No,2311.0,2326.0,133.0,480.0,1.0,Urban,Y
+LP000081,Ganesh Jadhav,Male,Yes,1,Graduate,No,3758.0,0.0,183.0,360.0,1.0,Urban,N
+LP000082,Tushar Mane,Male,Yes,3+,Graduate,No,1654.0,3366.0,157.0,360.0,1.0,Semiurban,Y
+LP000083,Sarita Tiwari,Female,Yes,3+,Graduate,No,12344.0,2854.0,165.0,60.0,1.0,Urban,Y
+LP000084,Prashant Borkar,Male,Yes,0,Graduate,No,9242.0,4239.0,121.0,360.0,1.0,Rural,Y
+LP000085,Deepak Verma,Male,No,0,Not Graduate,No,3933.0,1176.0,92.0,60.0,1.0,Urban,Y
+LP000086,Shivaji Bhosale,Male,Yes,0,Graduate,No,1753.0,0.0,113.0,360.0,1.0,Urban,Y
+LP000087,Suresh Kumar,Male,No,,Graduate,No,12159.0,836.0,54.0,360.0,1.0,Rural,Y
+LP000088,Sanjay Joshi,Male,Yes,0,Not Graduate,No,3092.0,2788.0,216.0,120.0,0.0,Semiurban,N
+LP000089,Abhijit Wagh,Male,Yes,3+,Graduate,No,1816.0,0.0,69.0,120.0,0.0,Urban,N
+LP000090,Balaji Sutar,Male,No,0,Graduate,Yes,1131.0,0.0,120.0,120.0,1.0,Semiurban,Y
+LP000091,Harish Nair,Male,Yes,0,Graduate,No,2527.0,0.0,194.0,480.0,1.0,Urban,Y
+LP000092,Mahesh Sharma,Male,Yes,2,Not Graduate,No,1412.0,1536.0,215.0,360.0,1.0,Urban,N
+LP000093,Abhijit Wagh,Male,No,0,Graduate,No,2570.0,0.0,51.0,360.0,1.0,Semiurban,Y
+LP000094,Arjun Maske,Male,No,0,Graduate,No,6877.0,0.0,129.0,360.0,1.0,Urban,Y
+LP000095,Rohit Kulkarni,Male,Yes,3+,Graduate,Yes,3071.0,4761.0,175.0,120.0,,Semiurban,Y
+LP000096,Baburao Chavan,Male,Yes,0,Graduate,No,5198.0,1259.0,140.0,360.0,1.0,Urban,Y
+LP000097,Dattatray Kadam,Male,Yes,0,Graduate,No,2390.0,0.0,284.0,180.0,1.0,Semiurban,Y
+LP000098,Arjun Maske,Male,Yes,0,Graduate,No,4217.0,2394.0,86.0,60.0,1.0,Rural,Y
+LP000099,Yogesh Kamble,Male,Yes,3+,Not Graduate,No,16043.0,1818.0,44.0,240.0,1.0,Urban,Y
+LP000100,Vimala More,Female,Yes,0,Graduate,No,3131.0,670.0,212.0,120.0,1.0,Urban,Y
+LP000101,Nalini Londhe,Female,No,0,Graduate,No,5307.0,0.0,101.0,360.0,1.0,Semiurban,Y
+LP000102,Dattatray Kadam,Male,No,0,Graduate,No,1304.0,0.0,52.0,360.0,1.0,Rural,Y
+LP000103,Nitin Patel,Male,No,0,Not Graduate,No,12022.0,450.0,124.0,36.0,0.0,Semiurban,N
+LP000104,Sunita Devi,Female,No,3+,Graduate,No,2854.0,0.0,267.0,360.0,1.0,Semiurban,Y
+LP000105,Ramesh Patil,Male,No,0,Graduate,No,8573.0,2296.0,68.0,360.0,1.0,Semiurban,Y
+LP000106,Ramesh Patil,Male,No,3+,Not Graduate,No,3682.0,0.0,,120.0,1.0,Urban,N
+LP000107,Akshay Salve,Male,No,0,Graduate,No,6250.0,435.0,86.0,180.0,,Semiurban,N
+LP000108,Kedar Deshpande,Male,Yes,0,Not Graduate,No,6523.0,553.0,142.0,360.0,0.0,Urban,N
+LP000109,Balaji Sutar,Male,Yes,2,Graduate,No,2905.0,1805.0,69.0,360.0,1.0,Semiurban,Y
+LP000110,Rekha Kumari,Female,Yes,0,Graduate,No,8832.0,6508.0,139.0,360.0,1.0,Urban,Y
+LP000111,Mahesh Sharma,Male,Yes,0,Not Graduate,Yes,2330.0,1148.0,126.0,120.0,1.0,Urban,Y
+LP000112,Anil Tiwari,Male,Yes,2,Graduate,No,7045.0,3170.0,60.0,360.0,1.0,Semiurban,Y
+LP000113,Sachin Kale,Male,Yes,0,Graduate,No,3038.0,1324.0,642.0,360.0,0.0,Semiurban,N
+LP000114,Ramesh Patil,Male,Yes,0,Graduate,No,5175.0,1874.0,103.0,360.0,1.0,Semiurban,Y
+LP000115,Pravin Pawar,Male,Yes,3+,Graduate,No,2885.0,3982.0,103.0,84.0,1.0,Semiurban,Y
+LP000116,Sona Gaikwad,Female,Yes,0,Graduate,No,4171.0,1444.0,231.0,60.0,1.0,Rural,Y
+LP000117,Vijay Gupta,Male,No,0,Graduate,No,1856.0,1155.0,368.0,360.0,1.0,Rural,Y
+LP000118,Kedar Deshpande,Male,No,0,Graduate,No,4809.0,0.0,252.0,360.0,1.0,Rural,Y
+LP000119,Abhijit Wagh,Male,Yes,0,Graduate,Yes,4154.0,1862.0,70.0,360.0,1.0,Semiurban,Y
+LP000120,Dattatray Kadam,Male,Yes,0,Graduate,No,2727.0,3675.0,153.0,360.0,1.0,Semiurban,Y
+LP000121,Deepak Verma,Male,Yes,1,Not Graduate,No,3868.0,1158.0,48.0,360.0,1.0,Semiurban,Y
+LP000122,Deepak Verma,Male,No,0,Graduate,No,4431.0,4511.0,223.0,360.0,0.0,Semiurban,N
+LP000123,Ramesh Patil,Male,No,1,Graduate,,2582.0,2160.0,55.0,360.0,1.0,Urban,N
+LP000124,Mangesh Gaikwad,Male,Yes,0,Graduate,No,3668.0,2399.0,87.0,360.0,,Semiurban,Y
+LP000125,Omkar Pol,Male,No,0,Graduate,No,1951.0,0.0,135.0,360.0,1.0,Urban,N
+LP000126,Ramesh Patil,Male,Yes,0,Graduate,No,21784.0,1302.0,173.0,360.0,1.0,Urban,Y
+LP000127,Prashant Borkar,Male,Yes,1,Graduate,No,8626.0,0.0,118.0,360.0,1.0,Rural,Y
+LP000128,Mangesh Gaikwad,Male,No,0,Graduate,No,4898.0,0.0,313.0,180.0,,Urban,N
+LP000129,Akshay Salve,Male,Yes,0,Not Graduate,No,9357.0,0.0,202.0,360.0,1.0,Semiurban,Y
+LP000130,Dattatray Kadam,Male,Yes,2,Not Graduate,No,1000.0,1584.0,193.0,360.0,1.0,Semiurban,Y
+LP000131,Mangesh Gaikwad,Male,Yes,0,Graduate,No,1000.0,0.0,69.0,12.0,1.0,Urban,Y
+LP000132,Ranjana Deshpande,Female,Yes,0,Not Graduate,No,3018.0,607.0,345.0,360.0,1.0,Rural,N
+LP000133,Vitthal Mule,Male,No,2,Not Graduate,No,1491.0,589.0,87.0,84.0,1.0,Urban,Y
+LP000134,Dattatray Kadam,Male,No,0,Graduate,No,3394.0,2702.0,353.0,360.0,,Rural,N
+LP000135,Kiran More,Male,Yes,0,Graduate,No,4666.0,0.0,412.0,180.0,0.0,Rural,N
+LP000136,Harish Nair,Male,Yes,0,Graduate,No,7806.0,0.0,180.0,360.0,0.0,Urban,N
+LP000137,Usha Desai,Female,No,0,Graduate,No,1773.0,1976.0,239.0,360.0,1.0,Urban,Y
+LP000138,Pandurang Nale,Male,Yes,0,Graduate,No,5365.0,1734.0,25.0,300.0,0.0,Urban,N
+LP000139,Vikram Desai,Male,No,2,Graduate,No,4066.0,2404.0,122.0,480.0,1.0,Semiurban,Y
+LP000140,Vishal Londhe,Male,No,0,Graduate,No,5168.0,2004.0,249.0,360.0,0.0,Urban,N
+LP000141,Sachin Kale,Male,Yes,2,Graduate,Yes,2768.0,311.0,226.0,480.0,1.0,Rural,N
+LP000142,Mahesh Sharma,Male,No,3+,Graduate,No,10893.0,1465.0,69.0,360.0,1.0,Urban,Y
+LP000143,Nirmala Thakur,Female,Yes,1,Graduate,No,3735.0,2383.0,115.0,60.0,0.0,Rural,N
+LP000144,Ravi Mishra,Male,Yes,1,Graduate,No,14435.0,5251.0,34.0,480.0,1.0,Urban,Y
+LP000145,Kedar Deshpande,Male,Yes,1,Graduate,No,2278.0,5411.0,170.0,360.0,1.0,Rural,Y
+LP000146,Kiran More,Male,Yes,3+,Graduate,No,6869.0,0.0,48.0,84.0,1.0,Urban,Y
+LP000147,Nitin Patel,Male,No,0,Not Graduate,No,3855.0,0.0,253.0,240.0,1.0,Semiurban,Y
+LP000148,Mahesh Sharma,Male,No,0,Not Graduate,No,3178.0,0.0,260.0,180.0,1.0,Semiurban,Y
+LP000149,Vijay Gupta,Male,No,0,Not Graduate,No,6344.0,4856.0,104.0,360.0,0.0,Urban,N
+LP000150,Vishal Londhe,Male,No,0,Not Graduate,No,3244.0,3492.0,181.0,480.0,0.0,Rural,N
+LP000151,Jyotsna Dalvi,Female,Yes,0,Not Graduate,Yes,1000.0,0.0,120.0,360.0,0.0,Urban,N
+LP000152,Sarita Tiwari,Female,Yes,1,Graduate,No,1000.0,2014.0,155.0,360.0,1.0,Semiurban,Y
+LP000153,Balaji Sutar,Male,No,0,Graduate,No,10058.0,0.0,72.0,84.0,1.0,Semiurban,Y
+LP000154,Abhijit Wagh,Male,No,3+,Graduate,No,9757.0,0.0,191.0,360.0,1.0,Semiurban,Y
+LP000155,Nitin Patel,Male,Yes,0,Graduate,No,15660.0,3838.0,55.0,300.0,1.0,Urban,Y
+LP000156,Manoj Sawant,Male,Yes,0,Graduate,No,3973.0,2433.0,50.0,360.0,1.0,Urban,Y
+LP000157,Nilesh Dalvi,Male,Yes,0,Graduate,No,1587.0,0.0,127.0,360.0,1.0,Urban,Y
+LP000158,Baburao Chavan,Male,Yes,0,Not Graduate,No,2975.0,2977.0,121.0,240.0,0.0,Urban,N
+LP000159,Prashant Borkar,Male,No,0,Graduate,No,4057.0,3073.0,158.0,360.0,1.0,Urban,Y
+LP000160,Amit Thakur,Male,Yes,0,Not Graduate,No,1949.0,1597.0,95.0,360.0,1.0,Rural,Y
+LP000161,Vishal Londhe,Male,No,0,Graduate,No,13187.0,1439.0,383.0,360.0,,Semiurban,Y
+LP000162,Shobha Patel,Female,No,0,Graduate,No,20180.0,3777.0,148.0,360.0,1.0,Semiurban,Y
+LP000163,Ganesh Jadhav,Male,No,0,Graduate,No,5678.0,5333.0,154.0,180.0,1.0,Urban,Y
+LP000164,Manoj Sawant,Male,Yes,0,Graduate,No,3993.0,0.0,151.0,360.0,1.0,Urban,N
+LP000165,Santosh Shinde,Male,Yes,0,Graduate,Yes,1584.0,1524.0,235.0,60.0,1.0,Semiurban,N
+LP000166,Vijay Gupta,Male,No,0,Graduate,No,12252.0,0.0,186.0,240.0,1.0,Urban,Y
+LP000167,Kavita Sharma,Female,No,0,Not Graduate,Yes,4251.0,0.0,173.0,480.0,0.0,Urban,N
+LP000168,Pravin Pawar,Male,Yes,0,Graduate,No,3268.0,1288.0,203.0,360.0,1.0,Semiurban,N
+LP000169,Anil Tiwari,Male,No,0,Graduate,No,5690.0,6150.0,50.0,180.0,1.0,Semiurban,Y
+LP000170,Shobha Patel,Female,Yes,2,Graduate,No,2639.0,2379.0,51.0,360.0,1.0,Rural,Y
+LP000171,Akshay Salve,Male,No,3+,Graduate,,4473.0,0.0,130.0,,1.0,Urban,Y
+LP000172,Sanjay Joshi,Male,Yes,3+,Graduate,No,1424.0,5672.0,122.0,360.0,1.0,Semiurban,Y
+LP000173,Ganesh Jadhav,Male,Yes,0,Graduate,No,8802.0,0.0,187.0,60.0,,Urban,Y
+LP000174,Chhaya Chavan,Female,Yes,0,Graduate,No,3732.0,1707.0,,360.0,,Urban,N
+LP000175,Suresh Kumar,Male,Yes,0,Graduate,No,9268.0,801.0,,360.0,1.0,Semiurban,Y
+LP000176,Vishal Londhe,Male,Yes,2,Graduate,No,3481.0,1616.0,68.0,12.0,1.0,Urban,Y
+LP000177,Anil Tiwari,Male,Yes,2,Graduate,No,3648.0,687.0,135.0,360.0,1.0,Semiurban,Y
+LP000178,Ranjana Deshpande,Female,Yes,2,Graduate,No,1681.0,0.0,65.0,300.0,1.0,Semiurban,Y
+LP000179,Usha Desai,Female,No,2,Graduate,No,6954.0,2376.0,168.0,60.0,1.0,Urban,Y
+LP000180,Ramesh Patil,Male,Yes,0,Graduate,No,2142.0,1510.0,48.0,360.0,0.0,Rural,N
+LP000181,Suvarna Kamble,Female,No,2,Graduate,No,2835.0,1694.0,164.0,360.0,1.0,Semiurban,N
+LP000182,Rekha Kumari,Female,No,2,Graduate,Yes,4027.0,2966.0,60.0,360.0,1.0,Rural,Y
+LP000183,Nitin Patel,Male,Yes,0,Graduate,No,4391.0,864.0,110.0,300.0,1.0,Semiurban,Y
+LP000184,Devidas Bhalerao,Male,Yes,3+,Graduate,No,1178.0,2065.0,222.0,120.0,1.0,Rural,N
+LP000185,Kedar Deshpande,Male,No,0,Graduate,,3408.0,2849.0,154.0,360.0,0.0,Urban,N
+LP000186,Harish Nair,Male,No,3+,Graduate,No,7134.0,568.0,55.0,180.0,1.0,Semiurban,Y
+LP000187,Omkar Pol,Male,Yes,2,Not Graduate,No,3064.0,2822.0,94.0,360.0,1.0,Semiurban,Y
+LP000188,Prashant Borkar,Male,No,0,Graduate,No,3423.0,609.0,59.0,360.0,1.0,Urban,Y
+LP000189,Amit Thakur,Male,Yes,1,Not Graduate,No,4523.0,1675.0,53.0,480.0,,Urban,Y
+LP000190,Amit Thakur,Male,Yes,0,Graduate,No,3675.0,0.0,145.0,84.0,1.0,Rural,Y
+LP000191,Shakuntala Pawar,Female,No,2,Graduate,No,1916.0,4584.0,185.0,360.0,1.0,Semiurban,Y
+LP000192,Pravin Pawar,Male,Yes,2,Graduate,No,3920.0,852.0,173.0,360.0,1.0,Semiurban,N
+LP000193,Vijay Gupta,Male,No,1,Graduate,No,8232.0,619.0,189.0,360.0,1.0,Semiurban,Y
+LP000194,Pramila Mane,Female,Yes,2,Not Graduate,No,1888.0,0.0,135.0,360.0,0.0,Rural,N
+LP000195,Harish Nair,Male,No,0,Graduate,No,3073.0,1382.0,117.0,,1.0,Rural,N
+LP000196,Amit Thakur,Male,Yes,0,Graduate,No,1488.0,680.0,75.0,84.0,1.0,Semiurban,Y
+LP000197,Rajesh Singh,Male,Yes,0,Graduate,No,7925.0,2545.0,106.0,360.0,,Urban,Y
+LP000198,Chhaya Chavan,Female,Yes,0,Graduate,No,3765.0,0.0,66.0,360.0,1.0,Urban,Y
+LP000199,Mahesh Sharma,Male,Yes,0,Graduate,No,2182.0,0.0,85.0,180.0,1.0,Semiurban,Y
+LP000200,Vitthal Mule,Male,No,0,Not Graduate,No,4300.0,1244.0,142.0,360.0,1.0,Rural,Y
+LP000201,Mahesh Sharma,Male,Yes,0,Graduate,No,1692.0,0.0,127.0,360.0,,Semiurban,Y
+LP000202,Shobha Patel,Female,Yes,0,Not Graduate,,1912.0,4197.0,700.0,60.0,1.0,Urban,N
+LP000203,Dinesh Yadav,Male,Yes,2,Graduate,No,1406.0,3703.0,65.0,360.0,1.0,Urban,Y
+LP000204,Prashant Borkar,Male,Yes,0,Graduate,No,1867.0,1637.0,127.0,360.0,1.0,Semiurban,Y
+LP000205,Balaji Sutar,Male,No,2,Graduate,No,10692.0,0.0,62.0,360.0,1.0,Rural,Y
+LP000206,Yogesh Kamble,Male,Yes,0,Not Graduate,No,2374.0,2331.0,110.0,360.0,1.0,Urban,N
+LP000207,Santosh Shinde,Male,No,0,Graduate,No,5629.0,4703.0,112.0,360.0,1.0,Semiurban,Y
+LP000208,Dinesh Yadav,Male,Yes,0,Graduate,,2204.0,4032.0,216.0,360.0,1.0,Semiurban,Y
+LP000209,Dattatray Kadam,Male,No,0,Graduate,No,6953.0,0.0,106.0,360.0,0.0,Rural,N
+LP000210,Ganesh Jadhav,Male,Yes,0,Graduate,No,1922.0,0.0,122.0,84.0,1.0,Urban,Y
+LP000211,Santosh Shinde,Male,Yes,0,Graduate,No,4139.0,1285.0,107.0,360.0,1.0,Rural,Y
+LP000212,Rajaram Thorat,Male,No,0,Graduate,Yes,4180.0,6355.0,,360.0,1.0,Semiurban,Y
+LP000213,Sachin Kale,Male,No,0,Graduate,No,21505.0,0.0,95.0,,1.0,Rural,Y
+LP000214,Kedar Deshpande,Male,No,0,Graduate,No,6335.0,857.0,110.0,120.0,1.0,Urban,Y
+LP000215,Ravi Mishra,Male,Yes,0,Graduate,No,2626.0,0.0,141.0,360.0,1.0,Semiurban,Y
+LP000216,Manoj Sawant,Male,Yes,2,Not Graduate,No,6590.0,1366.0,184.0,84.0,1.0,Semiurban,Y
+LP000217,Santosh Shinde,Male,No,0,Graduate,No,18760.0,0.0,119.0,360.0,0.0,Urban,N
+LP000218,Ravi Mishra,Male,Yes,3+,Not Graduate,No,1245.0,4881.0,118.0,120.0,1.0,Semiurban,Y
+LP000219,Pushpa Verma,Female,No,2,Not Graduate,Yes,2194.0,2440.0,53.0,360.0,1.0,Semiurban,Y
+LP000220,Balaji Sutar,Male,Yes,3+,Graduate,No,3393.0,0.0,183.0,360.0,0.0,Semiurban,N
+LP000221,Dattatray Kadam,Male,Yes,2,Graduate,No,2980.0,859.0,93.0,360.0,0.0,Urban,N
+LP000222,Shivaji Bhosale,Male,No,0,Graduate,No,3167.0,0.0,205.0,360.0,1.0,Semiurban,N
+LP000223,Dattatray Kadam,Male,No,0,Graduate,Yes,1573.0,0.0,280.0,180.0,1.0,Urban,Y
+LP000224,Chhaya Chavan,Female,Yes,0,Graduate,No,11057.0,0.0,122.0,360.0,,Rural,Y
+LP000225,Ravi Mishra,Male,Yes,2,Graduate,No,1445.0,0.0,77.0,180.0,1.0,Rural,Y
+LP000226,Jyotsna Dalvi,Female,Yes,1,Graduate,No,3484.0,1289.0,134.0,360.0,1.0,Urban,Y
+LP000227,Tushar Mane,Male,Yes,0,Graduate,No,8544.0,0.0,164.0,180.0,1.0,Urban,Y
+LP000228,Omkar Pol,Male,Yes,3+,Not Graduate,No,3937.0,4629.0,114.0,360.0,0.0,Urban,N
+LP000229,Sachin Kale,Male,Yes,0,Graduate,No,1988.0,0.0,99.0,12.0,1.0,Semiurban,N
+LP000230,Dinesh Yadav,Male,No,0,Graduate,No,1524.0,534.0,185.0,180.0,,Rural,N
+LP000231,Abhijit Wagh,Male,No,1,Not Graduate,No,3410.0,2585.0,178.0,360.0,1.0,Semiurban,Y
+LP000232,Vishal Londhe,Male,Yes,0,Graduate,Yes,2333.0,1671.0,112.0,300.0,1.0,Urban,Y
+LP000233,Meena Patil,Female,Yes,1,Graduate,No,4665.0,0.0,55.0,360.0,0.0,Urban,N
+LP000234,Devidas Bhalerao,Male,Yes,2,Not Graduate,Yes,1467.0,0.0,174.0,360.0,1.0,Urban,N
+LP000235,Mangala Borkar,Female,Yes,0,Graduate,,7226.0,752.0,89.0,360.0,1.0,Rural,Y
+LP000236,Manoj Sawant,Male,Yes,0,Graduate,No,4373.0,1335.0,153.0,360.0,1.0,Semiurban,Y
+LP000237,Akshay Salve,Male,Yes,0,Graduate,No,4613.0,1076.0,147.0,360.0,1.0,Semiurban,Y
+LP000238,Vijay Gupta,Male,No,1,Not Graduate,No,11357.0,0.0,48.0,360.0,1.0,Urban,Y
+LP000239,Amit Thakur,Male,Yes,0,Graduate,No,2936.0,0.0,142.0,480.0,1.0,Rural,Y
+LP000240,Pandurang Nale,Male,Yes,3+,Graduate,No,2386.0,934.0,180.0,360.0,,Urban,Y
+LP000241,Shobha Patel,Female,Yes,2,Graduate,No,2712.0,5027.0,193.0,360.0,1.0,Rural,Y
+LP000242,Ravi Mishra,Male,No,0,Graduate,No,3503.0,2491.0,145.0,360.0,1.0,Rural,Y
+LP000243,Dinesh Yadav,Male,Yes,0,Graduate,Yes,3769.0,0.0,46.0,360.0,1.0,Semiurban,Y
+LP000244,Yogesh Kamble,Male,Yes,1,Graduate,No,2213.0,0.0,274.0,300.0,1.0,Rural,Y
+LP000245,Dattatray Kadam,Male,No,1,Not Graduate,,1000.0,1266.0,170.0,360.0,1.0,Urban,N
+LP000246,Kavita Sharma,Female,Yes,0,Graduate,No,2687.0,5670.0,70.0,360.0,1.0,Semiurban,Y
+LP000247,Dinesh Yadav,Male,Yes,0,Graduate,No,5214.0,0.0,88.0,360.0,1.0,Urban,Y
+LP000248,Ganesh Jadhav,Male,No,0,Graduate,No,4439.0,1610.0,154.0,300.0,,Semiurban,Y
+LP000249,Sanjay Joshi,Male,Yes,3+,Graduate,No,9544.0,2887.0,197.0,360.0,,Urban,Y
+LP000250,Dinesh Yadav,Male,Yes,0,Graduate,No,16448.0,0.0,104.0,480.0,1.0,Urban,Y
+LP000251,Vikram Desai,Male,Yes,2,Graduate,No,6952.0,2871.0,214.0,360.0,0.0,Urban,N
+LP000252,Mangala Borkar,Female,Yes,0,Graduate,No,10888.0,2642.0,51.0,360.0,1.0,Urban,Y
+LP000253,Balaji Sutar,Male,No,3+,Graduate,No,6989.0,4126.0,76.0,360.0,1.0,Semiurban,Y
+LP000254,Rohit Kulkarni,Male,Yes,0,Graduate,No,13782.0,3224.0,44.0,360.0,1.0,Semiurban,Y
+LP000255,Mangesh Gaikwad,Male,Yes,0,Graduate,No,15254.0,4209.0,83.0,360.0,1.0,Urban,Y
+LP000256,Shivaji Bhosale,Male,Yes,3+,Graduate,,7981.0,0.0,311.0,360.0,1.0,Rural,Y
+LP000257,Sunita Devi,Female,Yes,3+,Not Graduate,No,6692.0,1032.0,421.0,360.0,1.0,Rural,N
+LP000258,Omkar Pol,Male,Yes,0,Graduate,Yes,3471.0,0.0,154.0,360.0,1.0,Urban,N
+LP000259,Ravi Mishra,Male,Yes,0,Not Graduate,No,3906.0,670.0,95.0,360.0,1.0,Semiurban,Y
+LP000260,Nilesh Dalvi,Male,No,0,Not Graduate,No,3155.0,715.0,120.0,360.0,,Semiurban,Y
+LP000261,Vishal Londhe,Male,Yes,0,Graduate,No,6294.0,2611.0,176.0,360.0,1.0,Semiurban,Y
+LP000262,Jyotsna Dalvi,Female,Yes,0,Not Graduate,No,2396.0,5199.0,57.0,360.0,1.0,Urban,Y
+LP000263,Harish Nair,Male,Yes,2,Graduate,Yes,3507.0,2045.0,99.0,360.0,0.0,Semiurban,N
+LP000264,Pravin Pawar,Male,Yes,0,Graduate,Yes,1000.0,3462.0,299.0,,1.0,Urban,N
+LP000265,Sunita Devi,Female,Yes,1,Graduate,Yes,13914.0,494.0,76.0,360.0,1.0,Urban,Y
+LP000266,Kiran More,Male,Yes,0,Graduate,No,3433.0,1307.0,90.0,360.0,1.0,Semiurban,Y
+LP000267,Pandurang Nale,Male,Yes,0,Graduate,Yes,5586.0,0.0,137.0,360.0,1.0,Semiurban,Y
+LP000268,Anil Tiwari,Male,No,1,Graduate,No,11494.0,3003.0,158.0,,1.0,Rural,Y
+LP000269,Anil Tiwari,Male,No,0,Graduate,No,4995.0,661.0,96.0,360.0,1.0,Urban,Y
+LP000270,Mangesh Gaikwad,Male,Yes,1,Not Graduate,No,11384.0,0.0,142.0,360.0,1.0,Urban,Y
+LP000271,Devidas Bhalerao,Male,Yes,0,Graduate,No,1646.0,2525.0,189.0,360.0,1.0,Urban,Y
+LP000272,Manoj Sawant,Male,Yes,3+,Graduate,No,22609.0,0.0,399.0,360.0,1.0,Urban,Y
+LP000273,Deepak Verma,Male,Yes,2,Graduate,Yes,8802.0,0.0,127.0,480.0,1.0,Urban,Y
+LP000274,Anil Tiwari,Male,Yes,2,Graduate,No,4678.0,0.0,133.0,360.0,0.0,Semiurban,N
+LP000275,Kedar Deshpande,Male,No,0,Graduate,No,11227.0,0.0,314.0,360.0,1.0,Semiurban,Y
+LP000276,Nitin Patel,Male,No,0,Graduate,Yes,1735.0,0.0,100.0,360.0,1.0,Semiurban,N
+LP000277,Akshay Salve,Male,No,0,Graduate,No,3269.0,888.0,65.0,240.0,1.0,Semiurban,N
+LP000278,Kiran More,Male,Yes,0,Graduate,No,11383.0,2610.0,156.0,480.0,1.0,Urban,Y
+LP000279,Pushpa Verma,Female,No,0,Not Graduate,Yes,1049.0,0.0,245.0,60.0,0.0,Semiurban,N
+LP000280,Sushila Yadav,Female,Yes,0,Graduate,No,6024.0,0.0,165.0,300.0,1.0,Urban,Y
+LP000281,Pravin Pawar,Male,Yes,0,Graduate,No,5903.0,2215.0,129.0,60.0,1.0,Rural,Y
+LP000282,Vikram Desai,Male,Yes,0,Graduate,No,16611.0,0.0,61.0,360.0,,Urban,Y
+LP000283,Baburao Chavan,Male,No,0,Not Graduate,No,1287.0,2832.0,131.0,360.0,1.0,Semiurban,Y
+LP000284,Harish Nair,Male,Yes,0,Graduate,Yes,12822.0,1806.0,267.0,360.0,1.0,Rural,Y
+LP000285,Shivaji Bhosale,Male,No,0,Graduate,No,2690.0,1321.0,69.0,360.0,0.0,Semiurban,N
+LP000286,Manoj Sawant,Male,Yes,1,Graduate,No,2917.0,1493.0,119.0,180.0,1.0,Semiurban,Y
+LP000287,Harish Nair,Male,No,0,Graduate,No,1669.0,1154.0,110.0,360.0,1.0,Semiurban,N
+LP000288,Manoj Sawant,Male,Yes,0,Graduate,No,1839.0,3222.0,92.0,360.0,1.0,Urban,Y
+LP000289,Kiran More,Male,Yes,0,Graduate,No,5380.0,719.0,155.0,180.0,1.0,Semiurban,Y
+LP000290,Prashant Borkar,Male,No,2,Graduate,Yes,1806.0,0.0,173.0,360.0,0.0,Rural,N
+LP000291,Sona Gaikwad,Female,Yes,0,Graduate,No,6857.0,0.0,172.0,360.0,1.0,Rural,N
+LP000292,Mangesh Gaikwad,Male,Yes,1,Graduate,No,2497.0,0.0,79.0,360.0,1.0,Semiurban,Y
+LP000293,Kavita Sharma,Female,Yes,3+,Graduate,No,1680.0,3588.0,55.0,180.0,1.0,Urban,Y
+LP000294,Mahesh Sharma,Male,Yes,0,Not Graduate,Yes,2752.0,622.0,157.0,360.0,1.0,Semiurban,N
+LP000295,Sunita Devi,Female,Yes,3+,Graduate,No,5128.0,0.0,103.0,360.0,1.0,Semiurban,Y
+LP000296,Vandana Wagh,Female,Yes,2,Graduate,No,3295.0,0.0,373.0,360.0,1.0,Urban,Y
+LP000297,Sushila Yadav,Female,Yes,0,Graduate,No,4124.0,843.0,382.0,180.0,1.0,Urban,Y
+LP000298,Ganesh Jadhav,Male,No,0,Not Graduate,Yes,6643.0,351.0,405.0,360.0,1.0,Urban,N
+LP000299,Balaji Sutar,Male,Yes,1,Graduate,No,8772.0,1725.0,81.0,360.0,1.0,Semiurban,Y
+LP000300,Vijay Gupta,Male,Yes,3+,Not Graduate,No,3219.0,3750.0,186.0,60.0,1.0,Urban,Y
+LP000301,Anil Tiwari,Male,Yes,0,Graduate,No,1897.0,0.0,219.0,84.0,1.0,Urban,Y
+LP000302,Rajesh Singh,Male,Yes,0,Graduate,No,4250.0,1027.0,206.0,360.0,1.0,Urban,Y
+LP000303,Vikram Desai,Male,Yes,0,Graduate,No,5647.0,5646.0,112.0,360.0,1.0,Rural,Y
+LP000304,Rajesh Singh,Male,No,0,Graduate,No,1406.0,425.0,274.0,360.0,1.0,Urban,Y
+LP000305,Sudha Sawant,Female,No,2,Not Graduate,No,2119.0,1423.0,136.0,180.0,1.0,Urban,Y
+LP000306,Kedar Deshpande,Male,Yes,0,Not Graduate,No,2398.0,1379.0,146.0,360.0,1.0,Semiurban,Y
+LP000307,Ravi Mishra,Male,Yes,1,Graduate,No,3465.0,0.0,,60.0,1.0,Urban,Y
+LP000308,Devidas Bhalerao,Male,Yes,2,Not Graduate,Yes,2326.0,4204.0,193.0,480.0,1.0,Rural,N
+LP000309,Rohit Kulkarni,Male,Yes,1,Graduate,No,6695.0,3362.0,118.0,360.0,1.0,Rural,Y
+LP000310,Rajesh Singh,Male,Yes,1,Graduate,No,1267.0,752.0,175.0,360.0,1.0,Semiurban,Y
+LP000311,Manoj Sawant,Male,No,2,Graduate,Yes,1290.0,3168.0,154.0,84.0,1.0,Semiurban,Y
+LP000312,Nilesh Dalvi,Male,Yes,2,Graduate,No,3164.0,2517.0,150.0,180.0,1.0,Urban,N
+LP000313,Deepak Verma,Male,Yes,2,Not Graduate,No,3546.0,0.0,132.0,480.0,1.0,Urban,Y
+LP000314,Akshay Salve,Male,Yes,0,Graduate,,1412.0,472.0,209.0,360.0,0.0,Urban,N
+LP000315,Vitthal Mule,Male,Yes,0,Graduate,No,2600.0,3550.0,122.0,180.0,1.0,Urban,Y
+LP000316,Mahesh Sharma,Male,Yes,0,Graduate,No,3015.0,0.0,61.0,,1.0,Urban,Y
+LP000317,Anil Tiwari,Male,Yes,2,Graduate,No,3032.0,784.0,185.0,120.0,1.0,Semiurban,Y
+LP000318,Vikram Desai,Male,No,1,Graduate,,4489.0,1579.0,87.0,360.0,1.0,Urban,Y
+LP000319,Balaji Sutar,Male,Yes,0,Graduate,No,2499.0,2291.0,65.0,360.0,1.0,Urban,Y
+LP000320,Rekha Kumari,Female,Yes,0,Graduate,No,11661.0,1713.0,77.0,360.0,1.0,Semiurban,Y
+LP000321,Nirmala Thakur,Female,Yes,0,Graduate,No,5719.0,659.0,159.0,180.0,1.0,Semiurban,Y
+LP000322,Santosh Shinde,Male,No,1,Graduate,No,2250.0,6159.0,129.0,60.0,1.0,Urban,Y
+LP000323,Vijay Gupta,Male,Yes,0,Graduate,No,4307.0,3473.0,42.0,360.0,1.0,Urban,Y
+LP000324,Suresh Kumar,Male,No,0,Graduate,Yes,4400.0,1454.0,110.0,360.0,0.0,Urban,N
+LP000325,Meena Patil,Female,No,2,Graduate,No,9649.0,0.0,258.0,360.0,,Urban,Y
+LP000326,Mahesh Sharma,Male,Yes,2,Not Graduate,No,2612.0,2284.0,106.0,360.0,1.0,Rural,Y
+LP000327,Devidas Bhalerao,Male,No,0,Graduate,No,6992.0,868.0,124.0,300.0,1.0,Rural,Y
+LP000328,Dattatray Kadam,Male,Yes,0,Not Graduate,No,4147.0,2230.0,241.0,360.0,1.0,Semiurban,N
+LP000329,Nitin Patel,Male,No,3+,Graduate,No,11777.0,761.0,210.0,360.0,1.0,Semiurban,Y
+LP000330,Arjun Maske,Male,Yes,1,Graduate,No,10193.0,0.0,238.0,120.0,1.0,Semiurban,Y
+LP000331,Deepak Verma,Male,No,1,Graduate,No,4637.0,846.0,30.0,360.0,1.0,Semiurban,Y
+LP000332,Vitthal Mule,Male,Yes,0,Graduate,Yes,3331.0,0.0,352.0,360.0,1.0,Urban,N
+LP000333,Pandurang Nale,Male,Yes,0,Not Graduate,Yes,5795.0,0.0,192.0,360.0,,Urban,Y
+LP000334,Mangala Borkar,Female,Yes,0,Graduate,No,3534.0,1879.0,525.0,,1.0,Semiurban,Y
+LP000335,Manoj Sawant,Male,No,1,Graduate,No,13492.0,0.0,88.0,360.0,1.0,Semiurban,Y
+LP000336,Anil Tiwari,Male,Yes,0,Graduate,,4258.0,489.0,51.0,360.0,1.0,Urban,Y
+LP000337,Dattatray Kadam,Male,Yes,0,Graduate,No,3005.0,0.0,136.0,360.0,1.0,Urban,Y
+LP000338,Ramesh Patil,Male,No,1,Graduate,No,2890.0,0.0,117.0,360.0,1.0,Urban,N
+LP000339,Anil Tiwari,Male,No,3+,Graduate,No,1680.0,2051.0,194.0,360.0,1.0,Urban,Y
+LP000340,Vandana Wagh,Female,Yes,2,Graduate,No,6007.0,0.0,245.0,360.0,1.0,Semiurban,Y
+LP000341,Ravi Mishra,Male,Yes,0,Graduate,No,2230.0,2069.0,129.0,360.0,1.0,Semiurban,Y
+LP000342,Meena Patil,Female,Yes,0,Graduate,No,8872.0,2294.0,119.0,360.0,1.0,Semiurban,Y
+LP000343,Yogesh Kamble,Male,No,0,Graduate,No,1586.0,4165.0,181.0,360.0,1.0,Urban,Y
+LP000344,Suresh Kumar,Male,Yes,0,Graduate,No,4410.0,1181.0,118.0,,1.0,Urban,Y
+LP000345,Arjun Maske,Male,No,0,Graduate,No,9211.0,421.0,113.0,360.0,0.0,Rural,N
+LP000346,Sachin Kale,Male,Yes,0,Graduate,No,1000.0,946.0,240.0,360.0,,Semiurban,N
+LP000347,Anita Singh,Female,Yes,1,Graduate,No,17208.0,0.0,271.0,360.0,1.0,Urban,Y
+LP000348,Vishal Londhe,Male,Yes,2,Graduate,No,2963.0,0.0,246.0,360.0,1.0,Urban,Y
+LP000349,Rajesh Singh,Male,Yes,3+,Graduate,No,4454.0,309.0,124.0,360.0,1.0,Rural,Y
+LP000350,Tushar Mane,Male,No,0,Graduate,No,6072.0,1351.0,42.0,360.0,1.0,Semiurban,Y
+LP000351,Rajesh Singh,Male,Yes,0,Graduate,No,6787.0,4568.0,125.0,360.0,1.0,Rural,Y
+LP000352,Kedar Deshpande,Male,Yes,0,Graduate,Yes,4901.0,1817.0,89.0,480.0,1.0,Semiurban,Y
+LP000353,Vishal Londhe,Male,No,0,Not Graduate,No,8251.0,0.0,126.0,360.0,,Semiurban,Y
+LP000354,Akshay Salve,Male,No,0,Graduate,No,5847.0,622.0,94.0,360.0,,Semiurban,Y
+LP000355,Vikram Desai,Male,No,0,Graduate,No,14297.0,0.0,134.0,480.0,,Urban,Y
+LP000356,Deepak Verma,Male,Yes,2,Graduate,No,5861.0,4602.0,77.0,360.0,1.0,Semiurban,Y
+LP000357,Vitthal Mule,Male,Yes,0,Graduate,Yes,16557.0,0.0,67.0,360.0,1.0,Semiurban,Y
+LP000358,Kedar Deshpande,Male,No,3+,Not Graduate,,7698.0,0.0,266.0,360.0,1.0,Urban,Y
+LP000359,Ravi Mishra,Male,Yes,0,Graduate,,1096.0,874.0,80.0,360.0,1.0,Rural,Y
+LP000360,Suresh Kumar,Male,Yes,0,Graduate,Yes,26370.0,0.0,136.0,84.0,1.0,Urban,Y
+LP000361,Savita Joshi,Female,No,0,Not Graduate,No,2661.0,858.0,,360.0,0.0,Urban,N
+LP000362,Pravin Pawar,Male,Yes,0,Graduate,No,11811.0,3911.0,224.0,360.0,0.0,Urban,N
+LP000363,Nitin Patel,Male,Yes,0,Graduate,No,4102.0,0.0,210.0,480.0,1.0,Rural,N
+LP000364,Shivaji Bhosale,Male,No,3+,Graduate,No,8639.0,0.0,160.0,360.0,1.0,Rural,Y
+LP000365,Devidas Bhalerao,Male,Yes,0,Graduate,No,2451.0,1197.0,202.0,360.0,1.0,Semiurban,Y
+LP000366,Vitthal Mule,Male,Yes,0,Graduate,No,6314.0,348.0,289.0,360.0,1.0,Rural,Y
+LP000367,Omkar Pol,Male,Yes,0,Graduate,Yes,3353.0,605.0,171.0,360.0,1.0,Rural,N
+LP000368,Manoj Sawant,Male,Yes,0,Not Graduate,Yes,12543.0,0.0,49.0,360.0,1.0,Rural,Y
+LP000369,Balaji Sutar,Male,Yes,1,Not Graduate,Yes,5518.0,926.0,101.0,360.0,0.0,Rural,N
+LP000370,Geeta Kulkarni,Female,No,0,Graduate,No,7894.0,1421.0,199.0,360.0,0.0,Urban,N
+LP000371,Ramesh Patil,Male,No,2,Graduate,No,1000.0,2768.0,96.0,180.0,,Semiurban,Y
+LP000372,Rohit Kulkarni,Male,Yes,0,Graduate,No,3783.0,0.0,331.0,360.0,1.0,Semiurban,Y
+LP000373,Harish Nair,Male,Yes,0,Graduate,No,5408.0,0.0,131.0,180.0,1.0,Semiurban,Y
+LP000374,Vitthal Mule,Male,No,1,Graduate,No,4727.0,1390.0,142.0,360.0,1.0,Urban,Y
+LP000375,Balaji Sutar,Male,Yes,2,Graduate,No,8039.0,1894.0,252.0,36.0,0.0,Semiurban,N
+LP000376,Vijay Gupta,Male,Yes,0,Graduate,No,3092.0,0.0,123.0,360.0,1.0,Rural,N
+LP000377,Sunita Devi,Female,Yes,0,Graduate,No,4168.0,1245.0,149.0,480.0,1.0,Urban,Y
+LP000378,Santosh Shinde,Male,No,0,Graduate,No,9419.0,0.0,222.0,180.0,1.0,Rural,Y
+LP000379,Santosh Shinde,Male,Yes,0,Graduate,No,1000.0,0.0,60.0,360.0,1.0,Urban,Y
+LP000380,Kedar Deshpande,Male,No,0,Graduate,No,6151.0,0.0,116.0,360.0,1.0,Urban,Y
+LP000381,Arjun Maske,Male,Yes,1,Not Graduate,Yes,3164.0,2405.0,214.0,180.0,1.0,Urban,Y
+LP000382,Shakuntala Pawar,Female,Yes,0,Graduate,Yes,2086.0,0.0,141.0,180.0,1.0,Rural,Y
+LP000383,Harish Nair,Male,Yes,1,Not Graduate,No,5127.0,901.0,304.0,360.0,1.0,Semiurban,Y
+LP000384,Amit Thakur,Male,Yes,0,Graduate,No,9738.0,0.0,57.0,480.0,1.0,Urban,Y
+LP000385,Harish Nair,Male,Yes,2,Not Graduate,No,8503.0,1130.0,,360.0,,Semiurban,Y
+LP000386,Nalini Londhe,Female,Yes,2,Graduate,No,3651.0,2338.0,207.0,360.0,1.0,Urban,Y
+LP000387,Ganesh Jadhav,Male,Yes,0,Graduate,No,7559.0,2829.0,218.0,360.0,,Semiurban,Y
+LP000388,Vimala More,Female,Yes,0,Not Graduate,No,7518.0,0.0,122.0,480.0,1.0,Rural,Y
+LP000389,Rajaram Thorat,Male,Yes,0,Graduate,No,3779.0,8645.0,,360.0,1.0,Semiurban,Y
+LP000390,Sunita Devi,Female,Yes,2,Graduate,No,2443.0,0.0,204.0,360.0,1.0,Rural,N
+LP000391,Santosh Shinde,Male,No,0,Graduate,Yes,2547.0,3886.0,87.0,360.0,1.0,Semiurban,Y
+LP000392,Mangesh Gaikwad,Male,Yes,0,Graduate,,7356.0,2971.0,92.0,360.0,1.0,Rural,Y
+LP000393,Baburao Chavan,Male,No,0,Graduate,No,3904.0,0.0,151.0,,1.0,Urban,N
+LP000394,Mahesh Sharma,Male,No,2,Graduate,No,1895.0,0.0,223.0,360.0,1.0,Urban,N
+LP000395,Kedar Deshpande,Male,Yes,0,Not Graduate,No,1196.0,4406.0,71.0,480.0,1.0,Urban,Y
+LP000396,Shivaji Bhosale,Male,No,0,Graduate,No,7324.0,949.0,122.0,360.0,1.0,Semiurban,Y
+LP000397,Savita Joshi,Female,No,3+,Graduate,No,2714.0,1253.0,119.0,360.0,1.0,Semiurban,Y
+LP000398,Kedar Deshpande,Male,Yes,0,Graduate,No,5105.0,2604.0,171.0,360.0,1.0,Semiurban,Y
+LP000399,Prashant Borkar,Male,Yes,2,Not Graduate,No,9824.0,4030.0,135.0,360.0,1.0,Urban,Y
+LP000400,Pravin Pawar,Male,Yes,0,Graduate,Yes,1568.0,0.0,100.0,360.0,,Urban,Y
+LP000401,Ganesh Jadhav,Male,Yes,0,Graduate,No,3895.0,1296.0,270.0,360.0,1.0,Semiurban,Y
+LP000402,Anita Singh,Female,Yes,2,Graduate,No,3559.0,0.0,101.0,360.0,0.0,Rural,N
+LP000403,Balaji Sutar,Male,No,1,Graduate,Yes,5289.0,1602.0,116.0,360.0,1.0,Urban,Y
+LP000404,Sanjay Joshi,Male,No,1,Not Graduate,No,9820.0,0.0,57.0,360.0,0.0,Urban,N
+LP000405,Anita Singh,Female,Yes,0,Graduate,No,1545.0,16871.0,92.0,84.0,1.0,Urban,Y
+LP000406,Sona Gaikwad,Female,No,0,Graduate,No,6065.0,2375.0,180.0,360.0,0.0,Semiurban,N
+LP000407,Dattatray Kadam,Male,Yes,0,Graduate,Yes,8457.0,0.0,162.0,360.0,,Urban,N
+LP000408,Sudha Sawant,Female,No,0,Graduate,No,3519.0,0.0,189.0,360.0,0.0,Urban,N
+LP000409,Yogesh Kamble,Male,Yes,0,Graduate,Yes,3645.0,1463.0,184.0,360.0,1.0,Semiurban,Y
+LP000410,Savita Joshi,Female,No,0,Graduate,No,5439.0,981.0,428.0,360.0,1.0,Urban,N
+LP000411,Tushar Mane,Male,No,0,Graduate,No,5158.0,2450.0,90.0,180.0,1.0,Semiurban,Y
+LP000412,Tushar Mane,Male,Yes,0,Graduate,Yes,6120.0,0.0,56.0,360.0,1.0,Urban,Y
+LP000413,Devidas Bhalerao,Male,Yes,0,Graduate,Yes,6028.0,1338.0,76.0,360.0,1.0,Rural,Y
+LP000414,Mangala Borkar,Female,No,0,Graduate,Yes,1984.0,6570.0,92.0,360.0,,Semiurban,N
+LP000415,Abhijit Wagh,Male,Yes,2,Graduate,No,8209.0,1121.0,79.0,360.0,1.0,Urban,Y
+LP000416,Rajaram Thorat,Male,Yes,1,Graduate,No,9322.0,1673.0,143.0,120.0,,Urban,Y
+LP000417,Pravin Pawar,Male,No,0,Graduate,Yes,4601.0,0.0,270.0,360.0,1.0,Semiurban,Y
+LP000418,Ganesh Jadhav,Male,Yes,1,Graduate,Yes,1372.0,0.0,316.0,360.0,,Rural,N
+LP000419,Pravin Pawar,Male,Yes,2,Graduate,No,3705.0,4148.0,179.0,360.0,1.0,Urban,Y
+LP000420,Sushila Yadav,Female,Yes,0,Graduate,No,4628.0,2389.0,440.0,360.0,1.0,Urban,Y
+LP000421,Sanjay Joshi,Male,Yes,0,Graduate,No,1765.0,0.0,111.0,360.0,1.0,Urban,N
+LP000422,Balaji Sutar,Male,No,0,Graduate,No,3105.0,0.0,,360.0,,Semiurban,N
+LP000423,Yogesh Kamble,Male,Yes,0,Graduate,No,1459.0,3284.0,242.0,360.0,,Rural,N
+LP000424,Mahesh Sharma,Male,Yes,2,Graduate,No,6231.0,3255.0,49.0,360.0,,Semiurban,Y
+LP000425,Nitin Patel,Male,Yes,3+,Graduate,No,4535.0,4834.0,90.0,360.0,1.0,Urban,Y
+LP000426,Vitthal Mule,Male,No,0,Graduate,No,1230.0,0.0,181.0,360.0,0.0,Rural,N
+LP000427,Sachin Kale,Male,Yes,2,Graduate,No,5183.0,1003.0,128.0,360.0,0.0,Semiurban,N
+LP000428,Sona Gaikwad,Female,No,0,Not Graduate,Yes,3863.0,3087.0,122.0,300.0,1.0,Urban,N
+LP000429,Santosh Shinde,Male,No,1,Graduate,No,5836.0,323.0,71.0,360.0,1.0,Urban,Y
+LP000430,Suresh Kumar,Male,No,2,Not Graduate,Yes,3035.0,0.0,135.0,120.0,1.0,Urban,N
+LP000431,Anita Singh,Female,No,0,Graduate,No,2260.0,0.0,236.0,60.0,1.0,Rural,N
+LP000432,Rajesh Singh,Male,No,0,Graduate,No,2310.0,0.0,137.0,360.0,1.0,Semiurban,N
+LP000433,Kedar Deshpande,Male,No,1,Graduate,No,2731.0,1367.0,86.0,360.0,1.0,Semiurban,Y
+LP000434,Pramila Mane,Female,Yes,3+,Graduate,No,4079.0,899.0,68.0,300.0,,Rural,N
+LP000435,Manoj Sawant,Male,No,0,Not Graduate,,4476.0,0.0,87.0,360.0,1.0,Urban,N
+LP000436,Mangesh Gaikwad,Male,Yes,0,Graduate,No,3508.0,1313.0,168.0,360.0,1.0,Urban,N
+LP000437,Abhijit Wagh,Male,Yes,0,Not Graduate,No,2967.0,1160.0,164.0,360.0,0.0,Urban,N
+LP000438,Kedar Deshpande,Male,No,0,Graduate,No,3124.0,0.0,87.0,360.0,1.0,Rural,N
+LP000439,Pravin Pawar,Male,No,1,Not Graduate,No,24479.0,1516.0,40.0,300.0,1.0,Semiurban,Y
+LP000440,Manoj Sawant,Male,No,2,Not Graduate,No,2310.0,1504.0,171.0,180.0,1.0,Urban,N
+LP000441,Mangala Borkar,Female,Yes,2,Graduate,No,2693.0,0.0,83.0,,0.0,Urban,N
+LP000442,Rohit Kulkarni,Male,Yes,2,Graduate,Yes,43113.0,1399.0,198.0,180.0,1.0,Semiurban,Y
+LP000443,Kedar Deshpande,Male,Yes,2,Graduate,No,5449.0,2261.0,89.0,360.0,1.0,Semiurban,Y
+LP000444,Baburao Chavan,Male,Yes,0,Graduate,No,1490.0,0.0,79.0,360.0,1.0,Semiurban,Y
+LP000445,Sanjay Joshi,Male,Yes,0,Not Graduate,No,7382.0,0.0,148.0,36.0,1.0,Urban,Y
+LP000446,Pravin Pawar,Male,Yes,0,Graduate,No,2090.0,0.0,496.0,120.0,0.0,Rural,N
+LP000447,Meena Patil,Female,Yes,0,Graduate,No,7743.0,0.0,205.0,300.0,1.0,Semiurban,Y
+LP000448,Ganesh Jadhav,Male,No,3+,Graduate,Yes,3457.0,825.0,,480.0,1.0,Semiurban,N
+LP000449,Pravin Pawar,Male,Yes,1,Graduate,No,2932.0,2037.0,165.0,360.0,1.0,Semiurban,Y
+LP000450,Vikram Desai,Male,No,3+,Not Graduate,No,12818.0,3639.0,52.0,360.0,,Rural,Y
+LP000451,Deepak Verma,Male,Yes,0,Graduate,No,6050.0,0.0,73.0,84.0,1.0,Rural,Y
+LP000452,Pushpa Verma,Female,Yes,0,Graduate,No,8108.0,1265.0,34.0,360.0,1.0,Semiurban,Y
+LP000453,Dinesh Yadav,Male,Yes,0,Not Graduate,No,5504.0,0.0,351.0,360.0,1.0,Semiurban,Y
+LP000454,Sachin Kale,Male,Yes,0,Graduate,No,2922.0,1523.0,314.0,360.0,1.0,Urban,N
+LP000455,Vijay Gupta,Male,No,0,Graduate,No,6249.0,0.0,168.0,360.0,0.0,Rural,N
+LP000456,Amit Thakur,Male,Yes,0,Graduate,Yes,9611.0,1352.0,146.0,360.0,0.0,Semiurban,N
+LP000457,Laxmi Mishra,Female,Yes,0,Graduate,No,4434.0,1753.0,58.0,360.0,0.0,Urban,N
+LP000458,Pandurang Nale,Male,No,3+,Graduate,No,14723.0,0.0,120.0,360.0,1.0,Urban,Y
+LP000459,Vitthal Mule,Male,No,0,Not Graduate,No,7423.0,2435.0,364.0,360.0,1.0,Rural,Y
+LP000460,Rajesh Singh,Male,Yes,0,Graduate,No,4687.0,1103.0,146.0,360.0,1.0,Rural,Y
+LP000461,Anil Tiwari,Male,Yes,2,Not Graduate,,4823.0,2005.0,99.0,360.0,0.0,Rural,N
+LP000462,Kedar Deshpande,Male,Yes,0,Not Graduate,No,4442.0,1056.0,52.0,180.0,1.0,Semiurban,Y
+LP000463,Sarita Tiwari,Female,Yes,2,Not Graduate,No,1635.0,0.0,290.0,360.0,1.0,Rural,N
+LP000464,Sachin Kale,Male,Yes,1,Graduate,,3771.0,2527.0,131.0,360.0,1.0,Rural,Y
+LP000465,Baburao Chavan,Male,Yes,0,Graduate,No,4719.0,0.0,52.0,360.0,1.0,Urban,Y
+LP000466,Anil Tiwari,Male,No,1,Graduate,No,2982.0,2026.0,82.0,360.0,0.0,Urban,N
+LP000467,Pandurang Nale,Male,Yes,1,Graduate,No,5131.0,0.0,67.0,300.0,1.0,Rural,Y
+LP000468,Kavita Sharma,Female,Yes,2,Graduate,No,4086.0,2576.0,126.0,360.0,1.0,Urban,Y
+LP000469,Deepak Verma,Male,Yes,2,Graduate,No,7024.0,3104.0,152.0,360.0,1.0,Semiurban,Y
+LP000470,Devidas Bhalerao,Male,No,1,Graduate,No,6486.0,0.0,103.0,180.0,1.0,Semiurban,Y
+LP000471,Rajaram Thorat,Male,Yes,1,Graduate,No,4538.0,1485.0,208.0,360.0,1.0,Semiurban,Y
+LP000472,Abhijit Wagh,Male,No,0,Graduate,No,1504.0,3316.0,142.0,480.0,0.0,Urban,N
+LP000473,Vijay Gupta,Male,No,1,Graduate,No,14608.0,0.0,243.0,120.0,1.0,Semiurban,Y
+LP000474,Deepak Verma,Male,Yes,3+,Graduate,No,3633.0,766.0,111.0,360.0,,Urban,Y
+LP000475,Vishal Londhe,Male,Yes,1,Not Graduate,No,3796.0,227.0,700.0,120.0,1.0,Rural,N
+LP000476,Abhijit Wagh,Male,Yes,1,Graduate,No,3144.0,0.0,99.0,360.0,1.0,Urban,Y
+LP000477,Ramesh Patil,Male,Yes,0,Not Graduate,No,2831.0,1060.0,83.0,360.0,1.0,Semiurban,N
+LP000478,Devidas Bhalerao,Male,No,2,Not Graduate,No,12231.0,2341.0,77.0,360.0,1.0,Rural,Y
+LP000479,Harish Nair,Male,Yes,3+,Graduate,Yes,10916.0,502.0,121.0,360.0,,Urban,N
+LP000480,Ramesh Patil,Male,No,0,Graduate,No,5541.0,0.0,53.0,360.0,1.0,Urban,Y
+LP000481,Deepak Verma,Male,Yes,0,Graduate,No,3724.0,0.0,159.0,360.0,1.0,Rural,N
+LP000482,Dattatray Kadam,Male,Yes,0,Graduate,No,6284.0,0.0,48.0,360.0,,Urban,Y
+LP000483,Mangesh Gaikwad,Male,Yes,0,Graduate,No,4243.0,2359.0,148.0,360.0,1.0,Urban,Y
+LP000484,Mahesh Sharma,Male,No,0,Graduate,No,3509.0,1259.0,65.0,360.0,1.0,Semiurban,N
+LP000485,Ramesh Patil,Male,No,0,Not Graduate,No,5133.0,1770.0,110.0,360.0,0.0,Rural,N
+LP000486,Amit Thakur,Male,Yes,0,Not Graduate,No,2929.0,0.0,189.0,360.0,1.0,Semiurban,N
+LP000487,Manoj Sawant,Male,Yes,1,Not Graduate,No,4825.0,3359.0,,360.0,0.0,Semiurban,N
+LP000488,Manoj Sawant,Male,No,1,Graduate,Yes,4661.0,1920.0,,180.0,1.0,Rural,Y
+LP000489,Nilesh Dalvi,Male,Yes,1,Graduate,No,6211.0,1065.0,125.0,360.0,,Semiurban,Y
+LP000490,Anil Tiwari,Male,No,1,Not Graduate,No,2577.0,0.0,91.0,180.0,1.0,Semiurban,N
+LP000491,Suresh Kumar,Male,Yes,1,Graduate,No,6710.0,2735.0,84.0,360.0,1.0,Semiurban,Y
+LP000492,Pravin Pawar,Male,Yes,2,Graduate,No,2095.0,0.0,92.0,360.0,0.0,Urban,N
+LP000493,Rajaram Thorat,Male,Yes,1,Graduate,No,2664.0,0.0,213.0,240.0,1.0,Urban,N
+LP000494,Anil Tiwari,Male,Yes,0,Graduate,Yes,2749.0,1407.0,104.0,360.0,1.0,Semiurban,Y
+LP000495,Nitin Patel,Male,Yes,1,Graduate,Yes,1860.0,1691.0,467.0,360.0,,Urban,N
+LP000496,Sachin Kale,Male,Yes,0,Graduate,,8361.0,0.0,171.0,360.0,0.0,Semiurban,N
+LP000497,Anil Tiwari,Male,No,0,Graduate,No,2003.0,543.0,78.0,360.0,1.0,Urban,N
+LP000498,Omkar Pol,Male,Yes,0,Graduate,No,2433.0,2536.0,111.0,360.0,1.0,Semiurban,Y
+LP000499,Deepak Verma,Male,Yes,2,Graduate,No,9936.0,0.0,87.0,360.0,1.0,Urban,Y
+LP000500,Santosh Shinde,Male,Yes,1,Graduate,No,2668.0,564.0,211.0,360.0,0.0,Semiurban,N
+LP000501,Amit Thakur,Male,Yes,0,Graduate,No,3514.0,0.0,55.0,60.0,1.0,Semiurban,Y
+LP000502,Vandana Wagh,Female,Yes,1,Not Graduate,,1942.0,0.0,65.0,360.0,,Urban,N
+LP000503,Anita Singh,Female,Yes,0,Graduate,No,7330.0,2663.0,98.0,360.0,0.0,Urban,N
+LP000504,Rajesh Singh,Male,Yes,1,Graduate,Yes,7403.0,1379.0,197.0,480.0,1.0,Urban,Y
+LP000505,Devidas Bhalerao,Male,Yes,2,Graduate,No,6850.0,0.0,267.0,360.0,1.0,Rural,Y
+LP000506,Omkar Pol,Male,No,1,Graduate,Yes,5926.0,1906.0,290.0,84.0,1.0,Urban,Y
+LP000507,Sachin Kale,Male,Yes,1,Not Graduate,No,4243.0,2124.0,182.0,360.0,1.0,Rural,N
+LP000508,Pramila Mane,Female,No,0,Graduate,No,2759.0,1924.0,130.0,360.0,1.0,Urban,N
+LP000509,Kiran More,Male,Yes,0,Graduate,No,2238.0,1608.0,210.0,60.0,1.0,Urban,N
+LP000510,Vijay Gupta,Male,Yes,2,Graduate,No,10186.0,895.0,72.0,360.0,1.0,Semiurban,Y
+LP000511,Kiran More,Male,No,1,Graduate,No,6979.0,2380.0,49.0,480.0,1.0,Semiurban,Y
+LP000512,Chhaya Chavan,Female,Yes,0,Not Graduate,,2443.0,2455.0,172.0,360.0,1.0,Urban,N
+LP000513,Akshay Salve,Male,No,0,Not Graduate,No,4141.0,2060.0,78.0,480.0,1.0,Rural,Y
+LP000514,Mangesh Gaikwad,Male,Yes,0,Not Graduate,No,3242.0,1943.0,131.0,360.0,1.0,Urban,Y
+LP000515,Rohit Kulkarni,Male,Yes,0,Not Graduate,No,1786.0,0.0,145.0,360.0,1.0,Urban,Y
+LP000516,Yogesh Kamble,Male,No,0,Graduate,No,4573.0,0.0,155.0,360.0,1.0,Semiurban,Y
+LP000517,Tushar Mane,Male,Yes,0,Not Graduate,Yes,2983.0,0.0,,120.0,1.0,Semiurban,N
+LP000518,Pravin Pawar,Male,Yes,3+,Graduate,No,2027.0,1122.0,214.0,360.0,1.0,Rural,N
+LP000519,Rajaram Thorat,Male,No,0,Not Graduate,No,1387.0,3718.0,151.0,360.0,1.0,Urban,Y
+LP000520,Vandana Wagh,Female,No,0,Graduate,No,1305.0,4031.0,106.0,84.0,1.0,Rural,Y
+LP000521,Sushila Yadav,Female,No,0,Graduate,Yes,3080.0,1494.0,144.0,360.0,0.0,Semiurban,N
+LP000522,Sanjay Joshi,Male,Yes,0,Graduate,No,3785.0,5322.0,98.0,360.0,1.0,Rural,Y
+LP000523,Tushar Mane,Male,Yes,2,Not Graduate,No,2143.0,2453.0,122.0,360.0,1.0,Rural,N
+LP000524,Omkar Pol,Male,No,0,Graduate,No,6429.0,1022.0,572.0,360.0,1.0,Rural,Y
+LP000525,Dattatray Kadam,Male,Yes,2,Graduate,No,3838.0,1418.0,150.0,360.0,1.0,Semiurban,Y
+LP000526,Tushar Mane,Male,No,2,Graduate,Yes,6096.0,3776.0,174.0,360.0,1.0,Urban,Y
+LP000527,Shobha Patel,Female,Yes,0,Not Graduate,No,3527.0,0.0,92.0,360.0,1.0,Semiurban,Y
+LP000528,Shakuntala Pawar,Female,Yes,1,Graduate,No,2283.0,909.0,238.0,360.0,0.0,Semiurban,N
+LP000529,Vitthal Mule,Male,No,3+,Graduate,No,4368.0,1652.0,206.0,360.0,1.0,Semiurban,Y
+LP000530,Suresh Kumar,Male,Yes,0,Graduate,No,1621.0,2064.0,207.0,360.0,1.0,Semiurban,N
+LP000531,Rohit Kulkarni,Male,Yes,0,Graduate,No,5934.0,1300.0,153.0,180.0,1.0,Urban,Y
+LP000532,Amit Thakur,Male,Yes,3+,Graduate,No,2049.0,8371.0,240.0,360.0,1.0,Rural,Y
+LP000533,Abhijit Wagh,Male,No,2,Graduate,No,7794.0,2105.0,273.0,360.0,0.0,Urban,N
+LP000534,Vikram Desai,Male,No,0,Not Graduate,No,3154.0,0.0,158.0,360.0,1.0,Rural,N
+LP000535,Rohit Kulkarni,Male,Yes,0,Not Graduate,Yes,8647.0,3921.0,127.0,360.0,1.0,Urban,Y
+LP000536,Ramesh Patil,Male,Yes,0,Not Graduate,No,1793.0,1426.0,222.0,180.0,1.0,Urban,N
+LP000537,Ramesh Patil,Male,No,2,Graduate,No,2470.0,3480.0,82.0,360.0,,Rural,Y
+LP000538,Kiran More,Male,Yes,0,Graduate,No,5294.0,612.0,91.0,84.0,1.0,Rural,Y
+LP000539,Vitthal Mule,Male,Yes,0,Graduate,No,9347.0,0.0,132.0,360.0,1.0,Semiurban,Y
+LP000540,Sarita Tiwari,Female,Yes,1,Not Graduate,No,13359.0,3576.0,52.0,300.0,1.0,Rural,Y
+LP000541,Radha Gupta,Female,Yes,3+,Graduate,No,4146.0,5017.0,214.0,180.0,1.0,Urban,Y
+LP000542,Arjun Maske,Male,No,2,Graduate,No,15111.0,1094.0,80.0,360.0,1.0,Rural,Y
+LP000543,Chhaya Chavan,Female,No,0,Graduate,No,3266.0,1014.0,105.0,240.0,,Urban,Y
+LP000544,Mangala Borkar,Female,No,0,Graduate,No,8876.0,2615.0,121.0,480.0,1.0,Semiurban,Y
+LP000545,Pravin Pawar,Male,Yes,3+,Graduate,No,2042.0,1206.0,139.0,360.0,1.0,Semiurban,Y
+LP000546,Ravi Mishra,Male,Yes,3+,Graduate,No,5445.0,0.0,112.0,360.0,1.0,Urban,Y
+LP000547,Baburao Chavan,Male,Yes,0,Graduate,No,1000.0,0.0,131.0,360.0,1.0,Semiurban,Y
+LP000548,Ravi Mishra,Male,Yes,1,Graduate,No,1794.0,1269.0,131.0,360.0,0.0,Semiurban,N
+LP000549,Pandurang Nale,Male,Yes,0,Graduate,No,5631.0,504.0,106.0,360.0,1.0,Urban,Y
+LP000550,Pandurang Nale,Male,Yes,0,Not Graduate,Yes,1564.0,776.0,89.0,360.0,1.0,Rural,N
+LP000551,Abhijit Wagh,Male,Yes,0,Graduate,No,5472.0,0.0,246.0,360.0,1.0,Semiurban,Y
+LP000552,Omkar Pol,Male,Yes,0,Graduate,No,7728.0,0.0,43.0,360.0,,Urban,Y
+LP000553,Vitthal Mule,Male,No,0,Not Graduate,No,2805.0,0.0,121.0,360.0,0.0,Semiurban,N
+LP000554,Shalini Jadhav,Female,Yes,2,Graduate,No,2003.0,732.0,105.0,360.0,1.0,Urban,Y
+LP000555,Vishal Londhe,Male,Yes,0,Graduate,No,2860.0,5250.0,171.0,360.0,1.0,Urban,Y
+LP000556,Yogesh Kamble,Male,No,0,Graduate,No,2007.0,7386.0,61.0,480.0,0.0,Semiurban,N
+LP000557,Devidas Bhalerao,Male,No,0,Not Graduate,No,3741.0,0.0,103.0,360.0,1.0,Urban,Y
+LP000558,Amit Thakur,Male,No,0,Graduate,No,4331.0,2136.0,128.0,120.0,1.0,Urban,Y
+LP000559,Pravin Pawar,Male,Yes,0,Graduate,No,3228.0,968.0,244.0,180.0,1.0,Semiurban,Y
+LP000560,Arjun Maske,Male,No,0,Graduate,No,13434.0,0.0,163.0,480.0,1.0,Urban,Y
+LP000561,Ravi Mishra,Male,Yes,0,Graduate,No,2397.0,5839.0,,360.0,1.0,Rural,Y
+LP000562,Vikram Desai,Male,Yes,1,Graduate,No,10958.0,1335.0,104.0,480.0,1.0,Rural,Y
+LP000563,Sunita Devi,Female,Yes,3+,Graduate,No,1901.0,0.0,221.0,120.0,1.0,Urban,Y
+LP000564,Dattatray Kadam,Male,Yes,0,Graduate,Yes,4240.0,0.0,70.0,180.0,1.0,Semiurban,Y
+LP000565,Arjun Maske,Male,Yes,3+,Not Graduate,No,9432.0,3809.0,130.0,360.0,1.0,Urban,Y
+LP000566,Akshay Salve,Male,Yes,2,Graduate,No,9087.0,217.0,135.0,360.0,1.0,Semiurban,Y
+LP000567,Kiran More,Male,No,2,Graduate,No,2973.0,1356.0,110.0,360.0,1.0,Urban,Y
+LP000568,Amit Thakur,Male,Yes,1,Not Graduate,No,6001.0,1755.0,597.0,360.0,1.0,Rural,N
+LP000569,Deepak Verma,Male,Yes,1,Graduate,No,5449.0,1177.0,108.0,180.0,1.0,Urban,Y
+LP000570,Shivaji Bhosale,Male,Yes,1,Not Graduate,Yes,2728.0,3169.0,174.0,300.0,1.0,Semiurban,Y
+LP000571,Devidas Bhalerao,Male,Yes,1,Not Graduate,No,6270.0,3949.0,89.0,360.0,1.0,Urban,Y
+LP000572,Geeta Kulkarni,Female,Yes,0,Not Graduate,No,15383.0,0.0,181.0,360.0,1.0,Urban,Y
+LP000573,Pravin Pawar,Male,Yes,3+,Graduate,No,5651.0,7050.0,,84.0,1.0,Semiurban,Y
+LP000574,Shivaji Bhosale,Male,Yes,1,Graduate,No,6050.0,0.0,98.0,360.0,1.0,Semiurban,Y
+LP000575,Mangala Borkar,Female,No,2,Graduate,No,6529.0,0.0,132.0,360.0,1.0,Rural,Y
+LP000576,Manoj Sawant,Male,No,0,Graduate,No,1405.0,1993.0,,180.0,1.0,Urban,Y
+LP000577,Sona Gaikwad,Female,Yes,0,Graduate,Yes,5605.0,1303.0,72.0,300.0,1.0,Urban,Y
+LP000578,Rajaram Thorat,Male,Yes,0,Graduate,No,1935.0,0.0,,360.0,1.0,Urban,Y
+LP000579,Nalini Londhe,Female,No,0,Not Graduate,No,2631.0,1769.0,100.0,360.0,1.0,Urban,Y
+LP000580,Rajesh Singh,Male,No,0,Graduate,No,19084.0,2070.0,36.0,360.0,0.0,Rural,N
+LP000581,Rajaram Thorat,Male,Yes,0,Graduate,Yes,3353.0,0.0,358.0,360.0,1.0,Rural,Y
+LP000582,Ravi Mishra,Male,No,0,Graduate,No,2362.0,1553.0,87.0,180.0,,Rural,Y
+LP000583,Tushar Mane,Male,No,0,Graduate,No,9227.0,1096.0,118.0,300.0,0.0,Urban,N
+LP000584,Pravin Pawar,Male,No,0,Graduate,No,2034.0,0.0,334.0,360.0,0.0,Semiurban,N
+LP000585,Sushila Yadav,Female,Yes,3+,Graduate,No,2916.0,0.0,125.0,360.0,1.0,Semiurban,Y
+LP000586,Ramesh Patil,Male,Yes,0,Not Graduate,No,9890.0,856.0,124.0,360.0,1.0,Urban,Y
+LP000587,Dattatray Kadam,Male,Yes,0,Graduate,No,4150.0,0.0,69.0,360.0,0.0,Semiurban,N
+LP000588,Rajaram Thorat,Male,Yes,0,Graduate,No,1307.0,0.0,55.0,360.0,1.0,Urban,Y
+LP000589,Anil Tiwari,Male,Yes,0,Graduate,No,5953.0,1956.0,124.0,,1.0,Urban,Y
+LP000590,Tushar Mane,Male,Yes,0,Graduate,Yes,3025.0,6525.0,,480.0,1.0,Rural,Y
+LP000591,Rekha Kumari,Female,Yes,1,Graduate,Yes,12194.0,430.0,160.0,360.0,1.0,Urban,Y
+LP000592,Abhijit Wagh,Male,Yes,3+,Graduate,No,2601.0,2453.0,104.0,180.0,,Rural,Y
+LP000593,Rohit Kulkarni,Male,No,0,Not Graduate,No,8577.0,1816.0,137.0,360.0,,Urban,Y
+LP000594,Vishal Londhe,Male,Yes,1,Graduate,No,14451.0,3072.0,49.0,300.0,1.0,Urban,Y
+LP000595,Abhijit Wagh,Male,Yes,0,Graduate,No,2181.0,2880.0,175.0,120.0,1.0,Urban,Y
+LP000596,Prashant Borkar,Male,No,0,Graduate,No,3501.0,1624.0,148.0,,1.0,Urban,Y
+LP000597,Nilesh Dalvi,Male,No,0,Graduate,Yes,5323.0,2023.0,402.0,360.0,0.0,Semiurban,N
+LP000598,Prashant Borkar,Male,No,0,Not Graduate,No,2170.0,1115.0,136.0,180.0,1.0,Urban,Y
+LP000599,Sunita Devi,Female,No,1,Graduate,No,4888.0,2694.0,,360.0,,Semiurban,N
+LP000600,Yogesh Kamble,Male,No,1,Not Graduate,No,3422.0,533.0,132.0,360.0,0.0,Rural,N
+LP000601,Akshay Salve,Male,Yes,2,Graduate,No,3373.0,2996.0,113.0,360.0,1.0,Urban,Y
+LP000602,Prashant Borkar,Male,Yes,0,Graduate,,4168.0,0.0,172.0,84.0,1.0,Urban,Y
+LP000603,Anita Singh,Female,Yes,1,Graduate,No,4236.0,1317.0,138.0,360.0,1.0,Semiurban,Y
+LP000604,Ramesh Patil,Male,Yes,0,Graduate,No,4528.0,1554.0,68.0,360.0,0.0,Rural,N
+LP000605,Sarita Tiwari,Female,No,0,Not Graduate,No,2615.0,1630.0,55.0,360.0,1.0,Semiurban,Y
+LP000606,Vishal Londhe,Male,Yes,0,Graduate,No,2698.0,0.0,157.0,360.0,1.0,Urban,Y
+LP000607,Laxmi Mishra,Female,Yes,1,Not Graduate,,3695.0,0.0,290.0,360.0,0.0,Semiurban,N
+LP000608,Pandurang Nale,Male,Yes,3+,Not Graduate,No,3896.0,0.0,142.0,84.0,1.0,Semiurban,Y
+LP000609,Amit Thakur,Male,Yes,0,Graduate,No,2934.0,1252.0,212.0,180.0,0.0,Urban,N
+LP000610,Kiran More,Male,Yes,0,Graduate,No,5081.0,2723.0,237.0,360.0,1.0,Urban,Y
+LP000611,Vishal Londhe,Male,Yes,2,Graduate,No,1089.0,0.0,157.0,360.0,1.0,Rural,N
+LP000612,Tushar Mane,Male,No,2,Graduate,Yes,2378.0,991.0,87.0,480.0,1.0,Urban,Y
+LP000613,Kavita Sharma,Female,Yes,0,Not Graduate,No,3289.0,0.0,151.0,180.0,1.0,Urban,Y
+LP000614,Priya Nair,Female,No,1,Graduate,No,2172.0,0.0,263.0,360.0,1.0,Urban,N

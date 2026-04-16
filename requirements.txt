@@ -1,0 +1,9 @@
+groq
+google-generativeai
+chromadb
+sentence-transformers
+flask
+flask-cors
+pandas
+numpy
+langchain

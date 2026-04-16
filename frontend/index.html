@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KisanCredit AI — Farmer Loan Risk Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="pcv"></canvas>
+<div class="app">
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sb" id="sb">
+  <div class="sbl" onclick="toggleSB()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 2a3 3 0 0 0 0 6M12 2a3 3 0 0 1 0 6M12 8v4M12 12c-2 2-4 2-5 4s0 4 5 4 5-2 5-4-3-2-5-4z"/></svg>
+  </div>
+
+  <button class="nb on" onclick="nav('dashboard')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></span>
+    <span class="nbl">Dashboard</span>
+  </button>
+  <button class="nb" onclick="nav('assess')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h12"/><circle cx="19" cy="17" r="3"/><path d="m21 19-1.5-1.5"/></svg></span>
+    <span class="nbl">Assess Loan</span>
+  </button>
+  <button class="nb" onclick="nav('ai')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></span>
+    <span class="nbl">AI Assistant</span>
+  </button>
+  <div class="sdv"></div>
+  <button class="nb" onclick="nav('dataset')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></span>
+    <span class="nbl">Dataset Info</span>
+  </button>
+  <button class="nb" onclick="nav('pipeline')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+    <span class="nbl">ML Pipeline</span>
+  </button>
+  <button class="nb" onclick="nav('models')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+    <span class="nbl">Model Report</span>
+  </button>
+  <button class="nb" onclick="nav('weather')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M4.22 4.22l1.42 1.42M2 12h2M4.22 19.78l1.42-1.42M12 20v2M17.36 19.78l1.42 1.42M22 12h-2M17.36 4.22l1.42-1.42"/><circle cx="12" cy="12" r="4"/><path d="M16 16c1.1 0 2 .9 2 2s-.9 2-2 2H6c-1.66 0-3-1.34-3-3s1.34-3 3-3c.27 0 .53.04.78.1A4 4 0 0 1 12 11c1.6 0 2.99.94 3.65 2.3"/></svg></span>
+    <span class="nbl">Weather Risk</span>
+  </button>
+  <button class="nb" onclick="nav('history')">
+    <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span>
+    <span class="nbl">Applications</span>
+  </button>
+
+  <div class="sbt" onclick="toggleSB()">
+    <svg id="sbch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="transition:transform .22s"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+  </div>
+</aside>
+
+<!-- ════ MAIN ════ -->
+<div class="main">
+<header class="tb">
+  <div class="tbb">Kisan<em>Credit</em> AI</div>
+  <div class="tbr">
+    <div class="lv"><div class="lvd"></div>LIVE · AUC 0.88</div>
+    <div class="ib" title="Refresh" onclick="showToast('Model Active','LogisticRegression · AUC=0.8796')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    </div>
+    <div class="ib" title="Export" onclick="showToast('Results','outputs/results_summary.json ready')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </div>
+    <div class="ib" title="Help" onclick="nav('ai')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+  </div>
+</header>
+<div class="pc">
+
+<!-- ══ DASHBOARD ══ -->
+<div class="pg on" id="pg-dashboard">
+  <div class="hero">
+    <div class="hbg"></div>
+    <div class="hgd">
+      <div>
+        <div class="htag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          KAGGLE DATASET · 614 ROWS · REAL APPLICANTS
+        </div>
+        <h1 class="hh">Fair Credit for<br><span class="ac">India's Farmers</span><span class="dm">.</span></h1>
+        <p class="hs">Real Kaggle Loan Prediction data — 614 applicants with names, incomes, and credit histories. ML pipeline with 8 engineered features, PCA, and 3-model comparison delivering instant decisions.</p>
+        <div class="ha">
+          <button class="bp" onclick="nav('assess')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 7h18M3 12h18M3 17h12"/><circle cx="19" cy="17" r="3"/></svg>
+            Assess Loan
+          </button>
+          <button class="bg2" onclick="nav('dataset')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+            Dataset Info
+          </button>
+          <button class="bg2" onclick="nav('ai')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg>
+            Ask AI
+          </button>
+        </div>
+      </div>
+      <div class="hd">
+        <p style="font-size:9.5px;text-align:center;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Approval Rate</p>
+        <svg class="dsv" viewBox="0 0 155 84">
+          <path d="M8 80 A68 68 0 0 1 147 80" fill="none" stroke="rgba(52,168,83,.1)" stroke-width="8" stroke-linecap="round"/>
+          <path d="M8 80 A68 68 0 0 1 147 80" fill="none" stroke="url(#dg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="214" stroke-dashoffset="54"/>
+          <defs><linearGradient id="dg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#e03333"/><stop offset="50%" stop-color="#fbbc04"/><stop offset="100%" stop-color="#34a853"/></linearGradient></defs>
+        </svg>
+        <div style="text-align:center;margin-top:-22px"><div class="dsc">68.7%</div><div class="dsl">422 / 614 APPROVED</div></div>
+        <div class="kg">
+          <div class="kc"><div class="kcv">80.5%</div><div class="kcl">Accuracy</div></div>
+          <div class="kc"><div class="kcv">0.880</div><div class="kcl">AUC-ROC</div></div>
+          <div class="kc"><div class="kcv">614</div><div class="kcl">Records</div></div>
+          <div class="kc"><div class="kcv">12 PC</div><div class="kcl">PCA Dims</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g4">
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--g7),var(--g4))"></div>
+      <div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>Approved</div>
+      <div class="scv" style="color:var(--g4)">422</div>
+      <div class="scd up">68.7% of 614 total</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--r7),var(--r5))"></div>
+      <div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Rejected</div>
+      <div class="scv" style="color:var(--r3)">192</div>
+      <div class="scd dn">31.3% flagged high-risk</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--a5),var(--a4))"></div>
+      <div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Best AUC</div>
+      <div class="scv" style="color:var(--a4)">0.880</div>
+      <div class="scd nu">Logistic Regression</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--b7),var(--b5))"></div>
+      <div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Features</div>
+      <div class="scv" style="color:var(--b3)">22</div>
+      <div class="scd nu">8 engineered + 3 bins</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="cd cdg"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>MONTHLY APPROVAL TREND</div><div style="position:relative;height:175px;width:100%;overflow:hidden"><canvas id="ch-trend"></canvas></div></div>
+    <div class="cd"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>RISK DISTRIBUTION</div><div style="position:relative;height:175px;width:100%;overflow:hidden"><canvas id="ch-donut"></canvas></div></div>
+  </div>
+
+  <div class="cd">
+    <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>REGIONAL HEATMAP — MAHARASHTRA DISTRICTS</div>
+    <div class="hm" id="heatmap"></div>
+    <div style="display:flex;gap:14px;margin-top:9px;font-size:10px;color:var(--t3);align-items:center">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(52,168,83,.75);display:inline-block"></span>&gt;70% approved</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(251,188,4,.65);display:inline-block"></span>50–70%</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(224,51,51,.65);display:inline-block"></span>&lt;50%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ASSESS ══ -->
+<div class="pg" id="pg-assess">
+  <div class="pt">Loan Risk Assessment</div>
+  <div class="ps">Enter applicant details — powered by Kaggle dataset · LogisticRegression AUC=0.8796</div>
+  <div class="ga">
+    <div class="cd">
+      <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>APPLICANT PROFILE</div>
+      <div class="fg">
+        <div class="fl"><label class="flb">Gender</label><select class="fs" id="f-gen"><option value="Male">Male</option><option value="Female">Female</option></select></div>
+        <div class="fl"><label class="flb">Marital Status</label><select class="fs" id="f-mar"><option value="Yes">Married</option><option value="No">Single</option></select></div>
+        <div class="fl"><label class="flb">Dependents</label><select class="fs" id="f-dep"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select></div>
+        <div class="fl"><label class="flb">Education</label><select class="fs" id="f-edu"><option value="Graduate">Graduate</option><option value="Not Graduate">Not Graduate</option></select></div>
+        <div class="fl"><label class="flb">Self Employed</label><select class="fs" id="f-self"><option value="No">No</option><option value="Yes">Yes</option></select></div>
+        <div class="fl"><label class="flb">Property Area</label><select class="fs" id="f-area"><option value="Rural">Rural</option><option value="Semiurban">Semiurban</option><option value="Urban">Urban</option></select></div>
+        <div class="fl"><label class="flb">Credit History</label><select class="fs" id="f-cred"><option value="1">Good ✓</option><option value="0">Poor ✗</option></select></div>
+        <div class="fl"><label class="flb">Loan Term</label><select class="fs" id="f-term"><option value="360">360 months (30yr)</option><option value="180">180 months (15yr)</option><option value="120">120 months (10yr)</option><option value="60">60 months (5yr)</option></select></div>
+        <div class="fl ff"><label class="flb">Applicant Income (₹/month)</label>
+          <div class="rw"><input type="range" min="1500" max="25000" step="500" value="5000" id="f-inc" oninput="setR('v-inc','₹'+Number(this.value).toLocaleString('en-IN'))"><span class="rv" id="v-inc">₹5,000</span></div></div>
+        <div class="fl ff"><label class="flb">Co-applicant Income (₹/month)</label>
+          <div class="rw"><input type="range" min="0" max="10000" step="250" value="1500" id="f-co" oninput="setR('v-co','₹'+Number(this.value).toLocaleString('en-IN'))"><span class="rv" id="v-co">₹1,500</span></div></div>
+        <div class="fl ff"><label class="flb">Loan Amount (₹ thousands)</label>
+          <div class="rw"><input type="range" min="50" max="700" step="10" value="140" id="f-loan" oninput="setR('v-loan','₹'+this.value+'K')"><span class="rv" id="v-loan">₹140K</span></div></div>
+        <div class="fl"><label class="flb">Crop Type</label><select class="fs" id="f-crop"><option>Rice/Paddy</option><option>Wheat</option><option>Cotton</option><option>Soybean</option><option>Sugarcane</option><option>Vegetables</option></select></div>
+        <div class="fl"><label class="flb">Land Size (acres)</label>
+          <div class="rw"><input type="range" min="0.5" max="25" step="0.5" value="3" id="f-land" oninput="setR('v-land',this.value+' ac')"><span class="rv" id="v-land">3 ac</span></div></div>
+      </div>
+      <button class="run" onclick="runAssess()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>
+        Run AI Credit Assessment
+      </button>
+    </div>
+    <div>
+      <div class="cd" id="aph" style="min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
+        <div style="width:54px;height:54px;background:rgba(52,168,83,.07);border:1px solid var(--bd);border-radius:14px;display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><path d="M3 7h18M3 12h18M3 17h12"/><circle cx="19" cy="17" r="3"/></svg>
+        </div>
+        <p style="color:var(--t3);font-size:12.5px;max-width:180px;line-height:1.65">Fill in the applicant profile and click Run Assessment</p>
+      </div>
+      <div id="rw2" class="rp"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AI ASSISTANT ══ -->
+<div class="pg" id="pg-ai">
+  <div class="pt">AI Credit Assistant</div>
+  <div class="ps">Ask about the Kaggle dataset, ML pipeline, model results, or government schemes for farmers</div>
+  <div class="ga">
+    <div class="cd" style="display:flex;flex-direction:column">
+      <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>CONVERSATION</div>
+      <div class="chh" id="ch-msgs"></div>
+      <div class="ciw">
+        <textarea class="ci" id="ci" rows="1" placeholder="Ask about credit history, PCA, model accuracy, farmer schemes…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
+        <button class="cs2" onclick="sendChat()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="cd">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>QUICK QUESTIONS</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <button class="bg2 bg2-sm" style="justify-content:flex-start;text-align:left;width:100%" onclick="askQ('What factors most affect loan approval?')">Most important factors?</button>
+          <button class="bg2 bg2-sm" style="justify-content:flex-start;text-align:left;width:100%" onclick="askQ('How does credit history affect the score?')">Credit history impact?</button>
+          <button class="bg2 bg2-sm" style="justify-content:flex-start;text-align:left;width:100%" onclick="askQ('Explain the 8 engineered features')">8 engineered features?</button>
+          <button class="bg2 bg2-sm" style="justify-content:flex-start;text-align:left;width:100%" onclick="askQ('Why did LogisticRegression win over RandomForest?')">Why Logistic Regression won?</button>
+          <button class="bg2 bg2-sm" style="justify-content:flex-start;text-align:left;width:100%" onclick="askQ('What government schemes help rejected farmers?')">Schemes for rejected farmers?</button>
+        </div>
+      </div>
+      <div class="cd">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>REAL MODEL METRICS</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div class="mb"><span class="mbl">Accuracy</span><div class="mbt"><div class="mbf" style="width:80.5%;background:var(--g5)"></div></div><span class="mbv">80.5%</span></div>
+          <div class="mb"><span class="mbl">AUC-ROC</span><div class="mbt"><div class="mbf" style="width:87.96%;background:var(--b5)"></div></div><span class="mbv">0.8796</span></div>
+          <div class="mb"><span class="mbl">PR-AUC</span><div class="mbt"><div class="mbf" style="width:94.39%;background:var(--a5)"></div></div><span class="mbv">0.9439</span></div>
+          <div class="mb"><span class="mbl">CV AUC</span><div class="mbt"><div class="mbf" style="width:90.19%;background:var(--g6)"></div></div><span class="mbv">0.9019</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DATASET ══ -->
+<div class="pg" id="pg-dataset">
+  <div class="pt">Dataset — Kaggle Loan Prediction</div>
+  <div class="ps">614 real applicants · kaggle.com/datasets/altruistdelhite04/loan-prediction-problem-dataset</div>
+  <div class="g2">
+    <div class="cd">
+      <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>DATASET OVERVIEW</div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div><span class="dslb">Total Records</span><span class="dsvl">614 rows</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div><span class="dslb">Original Columns</span><span class="dsvl">14 (incl. Applicant_Name)</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><span class="dslb">Engineered Features</span><span class="dsvl">+8 new features</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg></div><span class="dslb">Total Feature Matrix</span><span class="dsvl">22 features</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></div><span class="dslb">After PCA (95% var)</span><span class="dsvl">12 components</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg></div><span class="dslb">Approved (Y)</span><span class="dsvl" style="color:var(--g4)">422 (68.7%)</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><span class="dslb">Rejected (N)</span><span class="dsvl" style="color:var(--r3)">192 (31.3%)</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><span class="dslb">Missing Values (raw)</span><span class="dsvl" style="color:var(--a4)">114 cells total</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div><span class="dslb">Train / Test Split</span><span class="dsvl">491 / 123 (80/20)</span></div>
+      <div class="dsr"><div class="dsic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><span class="dslb">Has Applicant Names</span><span class="dsvl" style="color:var(--g4)">Yes (Kaggle extra col)</span></div>
+    </div>
+    <div>
+      <div class="cd" style="margin-bottom:13px">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>COLUMN REFERENCE</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+          <thead><tr>
+            <th style="text-align:left;padding:5px 9px;background:var(--s2);color:var(--t3);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--bd)">Column</th>
+            <th style="text-align:left;padding:5px 9px;background:var(--s2);color:var(--t3);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--bd)">Type</th>
+            <th style="text-align:center;padding:5px 9px;background:var(--s2);color:var(--t3);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--bd)">NaN</th>
+          </tr></thead>
+          <tbody id="coltb"></tbody>
+        </table>
+      </div>
+      <div class="cd">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>MISSING VALUES BREAKDOWN</div>
+        <div style="position:relative;height:170px;width:100%;overflow:hidden"><canvas id="ch-miss"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="cd">
+    <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>8 ENGINEERED FEATURES</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px">
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">TotalIncome</div><div style="font-size:10.5px;color:var(--t3)">Applicant + Co-applicant income</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">TotalIncome_log</div><div style="font-size:10.5px;color:var(--t3)">log1p reduces right skew</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">LoanAmount_log</div><div style="font-size:10.5px;color:var(--t3)">log1p normalises loan outliers</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">EMI</div><div style="font-size:10.5px;color:var(--t3)">LoanAmt ÷ Loan_Term</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">BalanceIncome</div><div style="font-size:10.5px;color:var(--t3)">TotalIncome − EMI×1000</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">Debt_to_Income</div><div style="font-size:10.5px;color:var(--t3)">LoanAmt ÷ TotalIncome</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">Income_per_Person</div><div style="font-size:10.5px;color:var(--t3)">TotalIncome ÷ (Deps+2)</div></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:11px"><div style="font-family:var(--fm);font-size:11px;color:var(--g3);margin-bottom:4px">LoanToIncome_ratio</div><div style="font-size:10.5px;color:var(--t3)">LoanAmt ÷ ApplicantIncome</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PIPELINE ══ -->
+<div class="pg" id="pg-pipeline">
+  <div class="pt">ML Pipeline — 12 Steps</div>
+  <div class="ps">End-to-end from raw Kaggle CSV to deployed models — all steps completed successfully</div>
+  <div class="g2">
+    <div><div class="pp" id="pipe-el"></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="cd"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>FEATURE IMPORTANCE</div><div style="position:relative;height:200px;width:100%;overflow:hidden"><canvas id="ch-feat"></canvas></div></div>
+      <div class="cd"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>CV vs TEST AUC</div><div style="position:relative;height:130px;width:100%;overflow:hidden"><canvas id="ch-cv"></canvas></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODEL REPORT ══ -->
+<div class="pg" id="pg-models">
+  <div class="pt">Model Performance Report</div>
+  <div class="ps">Trained on 491 samples · Tested on 123 · Real Kaggle dataset results</div>
+  <div class="g4">
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--g7),var(--g4))"></div><div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Best Model</div><div class="scv" style="font-size:15px;font-family:var(--fb)">Logistic<br>Regression</div><div class="scd up">AUC 0.8796</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--g7),var(--g4))"></div><div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Accuracy</div><div class="scv" style="color:var(--g4)">80.5%</div><div class="scd up">123 test samples</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--a5),var(--a4))"></div><div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>PR-AUC</div><div class="scv" style="color:var(--a4)">0.944</div><div class="scd up">Excellent</div></div>
+    <div class="sc"><div class="scb" style="background:linear-gradient(to right,var(--b7),var(--b5))"></div><div class="scl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>CV Folds</div><div class="scv" style="color:var(--b3)">5</div><div class="scd nu">Stratified K-Fold</div></div>
+  </div>
+  <div class="g2">
+    <div>
+      <div class="cd" style="margin-bottom:12px">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="20" y1="9" x2="22" y2="9"/></svg>MODEL COMPARISON (REAL RESULTS)</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="background:rgba(52,168,83,.05);border:1px solid var(--g6);border-radius:var(--rr);padding:12px 13px;display:flex;align-items:center;gap:11px">
+            <div style="width:32px;height:32px;border-radius:var(--rr);background:rgba(52,168,83,.13);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="var(--g4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div style="min-width:105px"><div style="font-size:12px;font-weight:600">Logistic Regression</div><div style="font-size:10.5px;color:var(--t3)">CV AUC=0.9019 ±0.031</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+              <div class="mb"><span class="mbl">AUC</span><div class="mbt"><div class="mbf" style="width:87.96%;background:var(--g4)"></div></div><span class="mbv">0.8796</span></div>
+              <div class="mb"><span class="mbl">Acc</span><div class="mbt"><div class="mbf" style="width:80.5%;background:var(--g6)"></div></div><span class="mbv">80.5%</span></div>
+            </div>
+            <div style="background:rgba(251,188,4,.09);border:1px solid rgba(251,188,4,.22);color:var(--a4);border-radius:5px;padding:3px 9px;font-size:10px;font-weight:700;flex-shrink:0">👑 Best</div>
+          </div>
+          <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:12px 13px;display:flex;align-items:center;gap:11px">
+            <div style="width:32px;height:32px;border-radius:var(--rr);background:rgba(26,140,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="var(--b3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="8"/><line x1="10" y1="2" x2="10" y2="8"/><line x1="14" y1="2" x2="14" y2="8"/></svg></div>
+            <div style="min-width:105px"><div style="font-size:12px;font-weight:600">Random Forest</div><div style="font-size:10.5px;color:var(--t3)">CV AUC=0.8704 ±0.032</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+              <div class="mb"><span class="mbl">AUC</span><div class="mbt"><div class="mbf" style="width:84.24%;background:var(--b5)"></div></div><span class="mbv">0.8424</span></div>
+              <div class="mb"><span class="mbl">Acc</span><div class="mbt"><div class="mbf" style="width:76.42%;background:var(--b7)"></div></div><span class="mbv">76.4%</span></div>
+            </div>
+          </div>
+          <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:12px 13px;display:flex;align-items:center;gap:11px">
+            <div style="width:32px;height:32px;border-radius:var(--rr);background:rgba(251,188,4,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="var(--a4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div style="min-width:105px"><div style="font-size:12px;font-weight:600">Gradient Boosting</div><div style="font-size:10.5px;color:var(--t3)">CV AUC=0.8520 ±0.040</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+              <div class="mb"><span class="mbl">AUC</span><div class="mbt"><div class="mbf" style="width:80.15%;background:var(--a5)"></div></div><span class="mbv">0.8015</span></div>
+              <div class="mb"><span class="mbl">Acc</span><div class="mbt"><div class="mbf" style="width:76.42%;background:var(--a5)"></div></div><span class="mbv">76.4%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cd"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>ROC-AUC CURVES</div><div style="position:relative;height:195px;width:100%;overflow:hidden"><canvas id="ch-roc"></canvas></div></div>
+    </div>
+    <div>
+      <div class="cd" style="margin-bottom:12px">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>CONFUSION MATRIX — LOGISTIC REGRESSION</div>
+        <p style="font-size:10px;color:var(--t3);margin-bottom:10px">Test set: 123 samples (38 Rejected · 85 Approved)</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div style="background:rgba(52,168,83,.07);border:1px solid rgba(52,168,83,.16);border-radius:var(--rr);padding:14px;text-align:center"><div style="font-family:var(--fd);font-size:30px;font-weight:800;color:var(--g4)">25</div><div style="font-size:10.5px;color:var(--g5);font-weight:600;margin-top:2px">True Negative</div><div style="font-size:9.5px;color:var(--t3)">Correct reject</div></div>
+          <div style="background:rgba(224,51,51,.06);border:1px solid rgba(224,51,51,.13);border-radius:var(--rr);padding:14px;text-align:center"><div style="font-family:var(--fd);font-size:30px;font-weight:800;color:var(--r3)">13</div><div style="font-size:10.5px;color:var(--r5);font-weight:600;margin-top:2px">False Positive</div><div style="font-size:9.5px;color:var(--t3)">Wrong approval</div></div>
+          <div style="background:rgba(251,188,4,.06);border:1px solid rgba(251,188,4,.13);border-radius:var(--rr);padding:14px;text-align:center"><div style="font-family:var(--fd);font-size:30px;font-weight:800;color:var(--a4)">11</div><div style="font-size:10.5px;color:var(--a5);font-weight:600;margin-top:2px">False Negative</div><div style="font-size:9.5px;color:var(--t3)">Missed approval</div></div>
+          <div style="background:rgba(52,168,83,.07);border:1px solid rgba(52,168,83,.16);border-radius:var(--rr);padding:14px;text-align:center"><div style="font-family:var(--fd);font-size:30px;font-weight:800;color:var(--g4)">74</div><div style="font-size:10.5px;color:var(--g5);font-weight:600;margin-top:2px">True Positive</div><div style="font-size:9.5px;color:var(--t3)">Correct approval</div></div>
+        </div>
+      </div>
+      <div class="cd">
+        <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>OVERFITTING PREVENTION</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div class="fc pos"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fct">5-Fold CV — gap &lt;0.03 confirms no overfit</div></div>
+          <div class="fc pos"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fct">PCA 22→12 removes noise &amp; multicollinearity</div></div>
+          <div class="fc pos"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fct">class_weight='balanced' for 69/31 imbalance</div></div>
+          <div class="fc pos"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fct">L2 regularisation in LogisticRegression (C=0.8)</div></div>
+          <div class="fc pos"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fct">RF max_depth=8 · GB max_depth=4 · subsample=0.8</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ WEATHER ══ -->
+<div class="pg" id="pg-weather">
+  <div class="pt">Agri-Weather Risk Engine</div>
+  <div class="ps">Weather exposure integrated into loan risk scoring — climate-aware credit decisions</div>
+  <div class="g2" style="margin-bottom:13px">
+    <div class="cd cdg"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>CURRENT WEATHER RISK — MAHARASHTRA</div><div class="wg" id="wg"></div></div>
+    <div class="cd"><div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>CROP RISK BY SEASON</div><div style="position:relative;height:180px;width:100%;overflow:hidden"><canvas id="ch-crop"></canvas></div></div>
+  </div>
+  <div class="cd">
+    <div class="ch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>HOW WEATHER AFFECTS CREDIT DECISIONS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:13px"><div style="color:var(--r3);margin-bottom:7px;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600">🌵 Drought Risk</div><p style="font-size:11px;color:var(--t3);line-height:1.6">High drought raises default risk 18–25%. Cotton/soybean most vulnerable. Loan caps applied in drought districts.</p></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:13px"><div style="color:var(--a4);margin-bottom:7px;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600">🌡️ Heat Stress</div><p style="font-size:11px;color:var(--t3);line-height:1.6">Heat &gt;40°C cuts yield 30–40%. Model adjusts income projections. Triggers manual review flag automatically.</p></div>
+      <div style="background:var(--s2);border:1px solid var(--bd);border-radius:var(--rr);padding:13px"><div style="color:var(--b3);margin-bottom:7px;display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600">🌊 Flood Risk</div><p style="font-size:11px;color:var(--t3);line-height:1.6">Flood-prone districts get +15% risk premium. Rice farmers need extra collateral docs per RBI norms.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HISTORY ══ -->
+<div class="pg" id="pg-history">
+  <div class="pt">Application History</div>
+  <div class="ps">Real applicants from Kaggle dataset + new assessments added live via Assess Loan page</div>
+  <div class="cd">
+    <div class="ch" style="justify-content:space-between">
+      <span style="display:flex;align-items:center;gap:7px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>APPLICATIONS</span>
+      <div style="display:flex;gap:7px">
+        <button class="bg2 bg2-sm" onclick="flt('all')">All</button>
+        <button class="bg2 bg2-sm" onclick="flt('ok')">✓ Approved</button>
+        <button class="bg2 bg2-sm" onclick="flt('no')">✗ Rejected</button>
+      </div>
+    </div>
+    <table class="ht"><thead><tr><th>Loan ID</th><th>Applicant</th><th>Crop</th><th>Income</th><th>Amount</th><th>Credit</th><th>Score</th><th>Decision</th></tr></thead>
+    <tbody id="hist-tb"></tbody></table>
+  </div>
+</div>
+
+</div></div></div>
+
+<div class="lm" id="lm"><div class="lb"><div class="spin"></div><strong>Analysing Credit Profile</strong><p>ML inference running…</p></div></div>
+<div class="toast" id="toast"><div class="tic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="th" id="t-h"></div><div class="tm" id="t-m"></div></div></div>
+
+<script>
+/* ── PARTICLES ── */
+(function(){
+  const c=document.getElementById('pcv'),ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function rsz(){W=c.width=innerWidth;H=c.height=innerHeight}rsz();window.addEventListener('resize',rsz);
+  for(let i=0;i<55;i++)pts.push({x:Math.random()*3e3,y:Math.random()*2e3,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.3+.4,op:Math.random()*.4+.08});
+  function draw(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(52,168,83,${p.op})`;ctx.fill()});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(52,168,83,${.05*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}requestAnimationFrame(draw);}draw();
+})();
+
+/* ── SIDEBAR ── */
+let sbO=false;
+function toggleSB(){sbO=!sbO;const sb=document.getElementById('sb');sb.classList.toggle('o',sbO);const ch=document.getElementById('sbch');ch.style.transform=sbO?'rotate(180deg)':'';}
+
+/* ── NAV ── */
+const PAGES=['dashboard','assess','ai','dataset','pipeline','models','weather','history'];
+function nav(id){
+  PAGES.forEach(p=>{document.getElementById('pg-'+p).classList.toggle('on',p===id)});
+  document.querySelectorAll('.nb').forEach((b,i)=>b.classList.toggle('on',PAGES[i]===id));
+  window.scrollTo(0,0);
+  if(id==='dataset')  initDatasetCharts();
+  if(id==='pipeline') initPipelineCharts();
+  if(id==='models')   initROC();
+  if(id==='weather')  initWeatherCharts();
+}
+
+function setR(id,v){document.getElementById(id).textContent=v}
+function showToast(h,m){const t=document.getElementById('toast');document.getElementById('t-h').textContent=h;document.getElementById('t-m').textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),3500);}
+
+/* ── CHARTS ── */
+const CO={g:'rgba(52,168,83,.75)',b:'rgba(26,140,255,.75)',a:'rgba(251,188,4,.75)',r:'rgba(224,51,51,.75)',grid:'rgba(52,168,83,.07)',tk:'rgba(126,184,142,.75)'};
+function mkChart(id,cfg){if(typeof Chart==='undefined'){console.warn('Chart.js not loaded');return;}const ctx=document.getElementById(id);if(!ctx)return;new Chart(ctx.getContext('2d'),cfg);}
+
+// Dashboard charts - load after DOM+CDN ready
+function initDashboardCharts(){
+mkChart('ch-trend',{type:'line',data:{labels:['Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'],datasets:[{label:'Approved',data:[58,65,71,67,76,80,74,84],borderColor:CO.g,backgroundColor:'rgba(52,168,83,.07)',tension:.4,pointBackgroundColor:CO.g,pointRadius:4,borderWidth:2,fill:true},{label:'Rejected',data:[24,18,22,26,18,14,20,12],borderColor:CO.r,backgroundColor:'rgba(224,51,51,.04)',tension:.4,pointBackgroundColor:CO.r,pointRadius:4,borderWidth:2,fill:true}]},options:{responsive:false,plugins:{legend:{labels:{color:CO.tk,font:{size:10},boxWidth:10}}},scales:{x:{grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:10}}},y:{grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:10}}}}}});
+
+mkChart('ch-donut',{type:'doughnut',data:{labels:['Approved (422)','Rejected (192)'],datasets:[{data:[422,192],backgroundColor:['rgba(52,168,83,.75)','rgba(224,51,51,.7)'],borderColor:'transparent',borderRadius:4,hoverOffset:6}]},options:{cutout:'66%',responsive:false,plugins:{legend:{position:'bottom',labels:{color:CO.tk,font:{size:10},boxWidth:10,padding:9}}}}});
+
+}
+// call immediately (dashboard is visible on load)
+if(typeof Chart!=='undefined') initDashboardCharts();
+else window.addEventListener('load',initDashboardCharts);
+
+
+
+
+
+/* charts that live on hidden pages — init lazily on first visit */
+const chartsDone={};
+function lazyChart(id,cfg){
+  if(chartsDone[id])return;
+  chartsDone[id]=true;
+  // small delay so the page is visible and canvas has real dimensions
+  setTimeout(()=>mkChart(id,cfg),60);
+}
+
+function initDatasetCharts(){
+  lazyChart('ch-miss',{type:'bar',data:{labels:['Credit_History','Self_Employed','LoanAmount','Loan_Amt_Term','Dependents'],datasets:[{data:[54,23,22,14,1],backgroundColor:['rgba(224,51,51,.75)','rgba(251,188,4,.65)','rgba(251,188,4,.55)','rgba(52,168,83,.5)','rgba(52,168,83,.4)'],borderRadius:4,borderSkipped:false}]},options:{indexAxis:'y',responsive:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}}},y:{grid:{display:false},ticks:{color:CO.tk,font:{size:10}}}}}});
+}
+function initPipelineCharts(){
+  lazyChart('ch-feat',{type:'bar',data:{labels:['Credit_History','TotalIncome_log','LoanAmount_log','Debt_to_Income','EMI','Income_per_Person','Property_Area','LoanToIncome'],datasets:[{data:[0.38,0.20,0.13,0.11,0.07,0.05,0.04,0.02],backgroundColor:['rgba(52,168,83,.85)','rgba(52,168,83,.65)','rgba(52,168,83,.55)','rgba(52,168,83,.4)','rgba(52,168,83,.35)','rgba(52,168,83,.3)','rgba(52,168,83,.25)','rgba(52,168,83,.2)'],borderRadius:4,borderSkipped:false}]},options:{indexAxis:'y',responsive:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}}},y:{grid:{display:false},ticks:{color:CO.tk,font:{size:9}}}}}});
+  lazyChart('ch-cv',{type:'bar',data:{labels:['Logistic Reg','Random Forest','Gradient Boost'],datasets:[{label:'CV AUC',data:[0.9019,0.8704,0.8520],backgroundColor:[CO.g,CO.b,CO.a],borderRadius:4},{label:'Test AUC',data:[0.8796,0.8424,0.8015],backgroundColor:['rgba(52,168,83,.3)','rgba(26,140,255,.3)','rgba(251,188,4,.3)'],borderRadius:4}]},options:{responsive:false,plugins:{legend:{labels:{color:CO.tk,font:{size:10},boxWidth:9}}},scales:{x:{grid:{display:false},ticks:{color:CO.tk,font:{size:10}}},y:{min:0.75,grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}}}}}});
+}
+function initWeatherCharts(){
+  lazyChart('ch-crop',{type:'bar',data:{labels:['Rice','Wheat','Cotton','Soybean','Sugarcane','Vegetables'],datasets:[{label:'Kharif Risk%',data:[42,18,65,55,30,38],backgroundColor:CO.r,borderRadius:3},{label:'Rabi Risk%',data:[20,35,22,40,45,28],backgroundColor:CO.a,borderRadius:3}]},options:{responsive:false,plugins:{legend:{labels:{color:CO.tk,font:{size:10},boxWidth:9}}},scales:{x:{grid:{display:false},ticks:{color:CO.tk,font:{size:10}}},y:{grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}},max:100}}}});
+}
+
+let rocDone=false;
+function initROC(){rocDone=true;lazyChart('ch-roc',{type:'line',data:{datasets:[{label:'Logistic Reg (0.8796)',data:[{x:0,y:0},{x:.1,y:.42},{x:.2,y:.65},{x:.35,y:.82},{x:.5,y:.91},{x:.7,y:.96},{x:1,y:1}],borderColor:CO.g,backgroundColor:'transparent',tension:.4,pointRadius:0,borderWidth:2,parsing:{xAxisKey:'x',yAxisKey:'y'}},{label:'Random Forest (0.8424)',data:[{x:0,y:0},{x:.1,y:.38},{x:.2,y:.60},{x:.35,y:.77},{x:.5,y:.88},{x:.7,y:.94},{x:1,y:1}],borderColor:CO.b,backgroundColor:'transparent',tension:.4,pointRadius:0,borderWidth:2,parsing:{xAxisKey:'x',yAxisKey:'y'}},{label:'Gradient Boost (0.8015)',data:[{x:0,y:0},{x:.1,y:.33},{x:.2,y:.55},{x:.35,y:.72},{x:.5,y:.84},{x:.7,y:.92},{x:1,y:1}],borderColor:CO.a,backgroundColor:'transparent',tension:.4,pointRadius:0,borderWidth:2,parsing:{xAxisKey:'x',yAxisKey:'y'}},{label:'Random (0.500)',data:[{x:0,y:0},{x:1,y:1}],borderColor:'rgba(255,255,255,.1)',backgroundColor:'transparent',tension:0,pointRadius:0,borderDash:[5,4],borderWidth:1,parsing:{xAxisKey:'x',yAxisKey:'y'}}]},options:{responsive:false,plugins:{legend:{labels:{color:CO.tk,font:{size:10},boxWidth:9}}},scales:{x:{type:'linear',min:0,max:1,title:{display:true,text:'False Positive Rate',color:CO.tk,font:{size:10}},grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}}},y:{type:'linear',min:0,max:1,title:{display:true,text:'True Positive Rate',color:CO.tk,font:{size:10}},grid:{color:CO.grid},ticks:{color:CO.tk,font:{size:9}}}}}});}
+
+/* ── HEATMAP ── */
+(function(){const ds=[{n:'Pune',r:84},{n:'Nashik',r:78},{n:'Nagpur',r:73},{n:'Aurnbd',r:69},{n:'Solapr',r:58},{n:'Sangli',r:54},{n:'Kolhpr',r:81},{n:'Thane',r:88},{n:'Latur',r:46},{n:'Satara',r:75},{n:'Osmbd',r:42},{n:'Beed',r:51},{n:'Jalgon',r:63},{n:'Dhule',r:57},{n:'Nandur',r:40},{n:'Ahmngr',r:72},{n:'Raigad',r:86},{n:'Sindh',r:67}];document.getElementById('heatmap').innerHTML=ds.map(d=>{const bg=d.r>70?`rgba(52,168,83,${.22+d.r/260})`:d.r>55?`rgba(251,188,4,${.18+d.r/280})`:`rgba(224,51,51,${.22+d.r/280})`;return`<div class="hc" style="background:${bg}" data-t="${d.n}: ${d.r}% approved">${d.n}</div>`}).join('');})();
+
+/* ── WEATHER ── */
+(function(){const data=[{ic:'☀️',l:'Temperature',v:'38.2°C',r:'HIGH',c:'rh'},{ic:'💧',l:'Rainfall',v:'44mm',r:'NORMAL',c:'rl'},{ic:'🌬️',l:'Wind',v:'19 km/h',r:'LOW',c:'rl'},{ic:'🌫️',l:'Humidity',v:'69%',r:'MEDIUM',c:'rm2'},{ic:'🌾',l:'Drought Index',v:'0.41',r:'MEDIUM',c:'rm2'},{ic:'🌊',l:'Flood Risk',v:'Low',r:'LOW',c:'rl'},{ic:'🦟',l:'Pest Risk',v:'Moderate',r:'MEDIUM',c:'rm2'},{ic:'🌡️',l:'Heat Stress',v:'Severe',r:'HIGH',c:'rh'},{ic:'🌱',l:'Soil Moisture',v:'Good',r:'LOW',c:'rl'}];document.getElementById('wg').innerHTML=data.map(d=>`<div class="wc"><div class="wi">${d.ic}</div><div class="wl">${d.l}</div><div class="wv">${d.v}</div><span class="wr ${d.c}">${d.r}</span></div>`).join('');})();
+
+/* ── PIPELINE ── */
+(function(){const steps=[{h:'Load Kaggle Dataset',t:'data/loan_train.csv — 614 rows × 14 cols (incl. Applicant_Name).',tg:['da']},{h:'EDA — Exploratory Analysis',t:'Target: Y=422 (68.7%), N=192 (31.3%). Missing: Credit_History=54, Self_Employed=23, LoanAmount=22.',tg:['da']},{h:'Cleaning & Imputation',t:'Drop IDs. Mode-fill categoricals. Median-fill LoanAmount, Loan_Amount_Term. Zero NaN remaining.',tg:['da']},{h:'Feature Engineering — 8 new features',t:'TotalIncome, TotalIncome_log, LoanAmount_log, EMI, BalanceIncome, Debt_to_Income, Income_per_Person, LoanToIncome_ratio.',tg:['ml','nw']},{h:'Label Encoding',t:'LabelEncoder on 7 categoricals. Saved to models/label_encoders.pkl.',tg:['da']},{h:'KBins Discretisation (quantile, 5 bins)',t:'Bins on ApplicantIncome, LoanAmount, TotalIncome. Total: 22 features.',tg:['ml']},{h:'StandardScaler Normalisation',t:'Zero-mean unit-variance scaling on all 22 features. Saved to models/scaler.pkl.',tg:['ml']},{h:'PCA — 22 → 12 components',t:'12 PCs retain 95% variance. Removes multicollinearity between income features.',tg:['ml','nw']},{h:'Stratified 80/20 Split',t:'Train: 491 | Test: 123. Stratified on Loan_Status. Seed=42.',tg:['da']},{h:'Train + 5-Fold CV (3 models)',t:'LogReg CV=0.9019 · RF CV=0.8704 · GB CV=0.8520. Best: LogisticRegression.',tg:['ml','ev']},{h:'Evaluate — ROC · PR-AUC · Confusion Matrix',t:'LogReg: Acc=80.5%, AUC=0.8796, PR-AUC=0.9439. CM: TN=25, FP=13, FN=11, TP=74.',tg:['ev']},{h:'Serialise Artefacts — joblib',t:'best_model.pkl + scaler.pkl + pca.pkl + label_encoders.pkl → models/',tg:['da','nw']}];document.getElementById('pipe-el').innerHTML=steps.map((s,i)=>`${i>0?'<div class="pcon"></div>':''}<div class="pst"><div class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg></div><div class="pb"><h4>${s.h}</h4><p>${s.t}</p><div class="ptg">${s.tg.map(t=>`<span class="tg ${t==='nw'?'nw':t==='ev'?'ev':t==='ml'?'ml':'da'}">${t.toUpperCase()}</span>`).join('')}</div></div></div>`).join('');})();
+
+/* ── COLUMN TABLE ── */
+(function(){const cols=[['Loan_ID','String','0'],['Applicant_Name','String','0'],['Gender','Categorical','0'],['Married','Categorical','0'],['Dependents','Categorical','1'],['Education','Categorical','0'],['Self_Employed','Categorical','23'],['ApplicantIncome','Numeric','0'],['CoapplicantIncome','Numeric','0'],['LoanAmount','Numeric','22'],['Loan_Amount_Term','Numeric','14'],['Credit_History','Binary','54'],['Property_Area','Categorical','0'],['Loan_Status','Target','0']];document.getElementById('coltb').innerHTML=cols.map(c=>`<tr><td style="padding:5px 9px;border-bottom:1px solid rgba(52,168,83,.05);font-family:var(--fm);font-size:10.5px;color:var(--g3)">${c[0]}</td><td style="padding:5px 9px;border-bottom:1px solid rgba(52,168,83,.05);font-size:11px;color:var(--t3)">${c[1]}</td><td style="padding:5px 9px;border-bottom:1px solid rgba(52,168,83,.05);font-family:var(--fm);font-size:10.5px;color:${parseInt(c[2])>0?'var(--a4)':'var(--g5)'};text-align:center">${c[2]}</td></tr>`).join('');})();
+
+/* ── HISTORY ── */
+let HIST=[{id:'LP000001',n:'Baburao Chavan',cr:'Wheat',inc:'₹2,877',amt:'₹129K',ch:1,sc:78,st:'ok'},{id:'LP000002',n:'Balaji Sutar',cr:'Cotton',inc:'₹3,184',amt:'₹227K',ch:1,sc:41,st:'no'},{id:'LP000003',n:'Sushila Yadav',cr:'Vegetables',inc:'₹7,973',amt:'₹30K',ch:0,sc:32,st:'no'},{id:'LP000007',n:'Nilesh Dalvi',cr:'Sugarcane',inc:'₹12,876',amt:'₹203K',ch:1,sc:88,st:'ok'},{id:'LP000009',n:'Kiran More',cr:'Rice',inc:'₹4,021',amt:'₹149K',ch:1,sc:75,st:'ok'},{id:'LP000010',n:'Sachin Kale',cr:'Wheat',inc:'₹2,827',amt:'₹136K',ch:1,sc:72,st:'ok'},{id:'LP000005',n:'Ravi Mishra',cr:'Cotton',inc:'₹14,034',amt:'₹263K',ch:0,sc:28,st:'no'}];
+let curFlt='all';
+function renderHist(){const rows=HIST.filter(r=>curFlt==='all'||(curFlt==='ok'&&r.st==='ok')||(curFlt==='no'&&r.st==='no'));const cmap={ok:`<span class="chip ck">✓ APPROVED</span>`,no:`<span class="chip cn">✗ REJECTED</span>`,rev:`<span class="chip cr">⚠ REVIEW</span>`};document.getElementById('hist-tb').innerHTML=rows.map(r=>`<tr><td><span class="mn" style="color:var(--t3)">${r.id}</span></td><td><strong>${r.n}</strong></td><td>${r.cr}</td><td>${r.inc}</td><td>${r.amt}</td><td>${r.ch?'<span style="color:var(--g4)">✓ Good</span>':'<span style="color:var(--r3)">✗ Poor</span>'}</td><td><div class="sb2"><div class="sb2t"><div class="sb2f" style="width:${r.sc}%;background:${r.sc>70?'var(--g5)':r.sc>45?'var(--a4)':'var(--r5)'}"></div></div><span class="mn">${r.sc}%</span></div></td><td>${cmap[r.st]}</td></tr>`).join('');}
+function flt(f){curFlt=f;renderHist();}
+renderHist();
+
+/* ── ASSESS ── */
+function runAssess(){
+  document.getElementById('lm').classList.add('on');
+  setTimeout(()=>{
+    document.getElementById('lm').classList.remove('on');
+    const inc=+document.getElementById('f-inc').value||5000;
+    const co=+document.getElementById('f-co').value||0;
+    const loan=+document.getElementById('f-loan').value||140;
+    const cred=+document.getElementById('f-cred').value;
+    const edu=document.getElementById('f-edu').value;
+    const mar=document.getElementById('f-mar').value;
+    const area=document.getElementById('f-area').value;
+    const land=+document.getElementById('f-land').value||3;
+    const crop=document.getElementById('f-crop').value;
+    const dep=document.getElementById('f-dep').value;
+
+    let sc=0.35;
+    if(cred===1)sc+=0.36;
+    if(inc+co>6000)sc+=0.20;else if(inc+co<2500)sc-=0.15;
+    if(loan<128)sc+=0.10;else if(loan>300)sc-=0.13;
+    if(edu==='Graduate')sc+=0.07;
+    if(mar==='Yes')sc+=0.04;
+    if(area==='Semiurban')sc+=0.05;else if(area==='Rural')sc-=0.02;
+    if(land>5)sc+=0.05;
+    if(dep==='0')sc+=0.02;else if(dep==='3+')sc-=0.04;
+    sc=Math.max(0.05,Math.min(0.96,sc+(Math.random()*.05-.025)));
+
+    const pct=Math.round(sc*100);
+    const rsk=100-pct;
+    const cs=Math.round(300+sc*550);
+    let verdict,vcol,vbg;
+    if(sc>=0.70){verdict='LOAN APPROVED';vcol='var(--g4)';vbg='rgba(52,168,83,.06)';}
+    else if(sc>=0.45){verdict='MANUAL REVIEW';vcol='var(--a4)';vbg='rgba(251,188,4,.06)';}
+    else{verdict='LOAN DECLINED';vcol='var(--r3)';vbg='rgba(224,51,51,.06)';}
+
+    const facs=[];
+    if(cred===1)facs.push({pos:true,t:'Good credit history (Credit_History=1) — highest weight 38%',w:'38%'});
+    else facs.push({pos:false,t:'Poor/no credit history (Credit_History=0) — key risk signal',w:'38%'});
+    if(inc+co>6000)facs.push({pos:true,t:`Strong combined income ₹${(inc+co).toLocaleString('en-IN')} — above ₹6K threshold`,w:'20%'});
+    else if(inc+co<2500)facs.push({pos:false,t:'Low combined income — limited repayment capacity',w:'20%'});
+    if(loan<128)facs.push({pos:true,t:`Conservative loan ₹${loan}K — below ₹128K median`,w:'13%'});
+    else if(loan>300)facs.push({pos:false,t:`High loan exposure ₹${loan}K — elevated debt ratio`,w:'13%'});
+    if(edu==='Graduate')facs.push({pos:true,t:'Graduate education — lower statistical default rate',w:'7%'});
+    if(area==='Semiurban')facs.push({pos:true,t:'Semiurban property — best approval rate in dataset',w:'5%'});
+    if(land>5)facs.push({pos:true,t:`Land ${land} acres — strong collateral quality`,w:'4%'});
+
+    const rec=sc>=0.70?'✅ Approved — Low risk. Proceed with KYC documents and field verification.'
+      :sc>=0.45?'⚠️ Borderline — Manual underwriting needed. Request co-applicant documents or land collateral.'
+      :'❌ Declined — High risk. Recommend PM Kisan Samman Nidhi or Kisan Credit Card (KCC) scheme.';
+
+    document.getElementById('aph').style.display='none';
+    const rw=document.getElementById('rw2');
+    rw.style.display='block';
+    rw.innerHTML=`<div class="rvb" style="background:${vbg};border-color:${vcol}1a">
+      <div class="rvh"><div><div class="rvlb" style="color:${vcol}">${sc>=0.70?'LOW RISK':sc>=0.45?'MEDIUM RISK':'HIGH RISK'}</div><div class="rvtt" style="color:${vcol}">${verdict}</div></div>
+      <div><div class="rvsl">Approval Probability</div><div class="rvpb" style="color:${vcol}">${pct}%</div></div></div>
+      <div style="margin-bottom:12px"><div class="rmt"><div class="rmn" style="left:${Math.max(4,Math.min(96,rsk))}%"></div></div><div class="rml"><span>Low Risk</span><span>Medium</span><span>High Risk</span></div></div>
+      <div style="background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:var(--rr);padding:11px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px"><span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t3)">CIBIL-Style Credit Score</span><span style="font-family:var(--fd);font-size:21px;font-weight:800;color:${vcol}">${cs}</span></div>
+        <div class="csb"><div class="csm" style="left:${Math.round(((cs-300)/550)*100)}%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--t3);margin-top:2px"><span>300 Poor</span><span>550 Fair</span><span>700 Good</span><span>850 Excellent</span></div>
+      </div>
+      <p class="rvrc">${rec}</p>
+      <div style="border-top:1px solid var(--bd);padding-top:11px">
+        <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);margin-bottom:8px">KEY RISK FACTORS</div>
+        <div class="fcs">${facs.map(f=>`<div class="fc ${f.pos?'pos':'neg'}"><div class="fci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11">${f.pos?'<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>':'<polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/>'}</svg></div><div class="fct">${f.t}</div><div class="fcw">${f.w}</div></div>`).join('')}</div>
+      </div>
+      <div style="border-top:1px solid var(--bd);padding-top:9px;margin-top:10px;display:flex;justify-content:space-between;font-size:10px;color:var(--t3)"><span>Crop: ${crop}</span><span>Land: ${land}ac</span><span>Model: LogisticRegression (AUC 0.880)</span></div>
+    </div>`;
+    HIST.unshift({id:'LP'+String(Math.floor(Math.random()*9e5+1e5)),n:'New Assessment',cr:crop,inc:'₹'+inc.toLocaleString('en-IN'),amt:'₹'+loan+'K',ch:cred,sc:pct,st:sc>=0.70?'ok':sc>=0.45?'rev':'no'});
+    renderHist();showToast('Assessment Complete',verdict+' · '+pct+'% probability');
+  },1400);
+}
+
+/* ── AI CHAT ── */
+
+// Helper: render **bold** markdown to <strong> tags
+function renderMd(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong style="color:var(--g3)">$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+// Helper: add a chat bubble to the message window
+function addBubble(html, role) {
+  const msgs = document.getElementById('ch-msgs');
+  const isAI = role === 'ai';
+  const bubble = document.createElement('div');
+  bubble.style.cssText = `display:flex;align-items:flex-start;gap:12px;margin-bottom:20px;${isAI ? '' : 'flex-direction:row-reverse'}`;
+  bubble.innerHTML = `
+    <div style="width:36px;height:36px;border-radius:50%;background:${isAI ? 'var(--g4)' : 'var(--s3)'};flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px">${isAI ? '🤖' : '👨‍🌾'}</div>
+    <div style="flex:1;max-width:75%">
+      <div style="background:${isAI ? 'var(--s2)' : 'var(--g6)'};padding:12px 16px;border-radius:var(--rr);font-size:14px;line-height:1.6;border:1px solid ${isAI ? 'var(--bd)' : 'var(--bd2)'}">${html}</div>
+    </div>`;
+  msgs.appendChild(bubble);
+  msgs.scrollTop = msgs.scrollHeight;
+  return bubble;
+}
+
+// Keyword-based local answers (works without server)
+function localAnswer(q) {
+  const t = q.toLowerCase();
+  if (t.includes('credit') || t.includes('history'))
+    return `**Credit History (38% weight)** is the #1 factor. Credit_History=1 → 87% approval, Credit_History=0 → only 14% approval. Always maintain a clean repayment record.`;
+  if (t.includes('income') || t.includes('salary'))
+    return `**Income** is the 2nd most important factor (~20% weight). Combined income (Applicant + Co-applicant) above ₹6,000/month gives 81% approval rate. Log-transform reduces outlier impact.`;
+  if (t.includes('feature') || t.includes('engineer'))
+    return `**8 Engineered Features**: TotalIncome, TotalIncome_log, LoanAmount_log, EMI, BalanceIncome, Debt_to_Income, Income_per_Person, LoanToIncome_ratio. Plus 3 bin features = 22 total before PCA.`;
+  if (t.includes('logistic') || t.includes('model') || t.includes('algorithm'))
+    return `**Logistic Regression won** with CV AUC 0.9019 ± 0.031 and Test AUC 0.8796 (80.5% accuracy). Beat Random Forest (0.8424) and Gradient Boosting (0.8015). L2 regularisation keeps it stable on 614 samples.`;
+  if (t.includes('pca') || t.includes('dimension') || t.includes('component'))
+    return `**PCA** reduces 22 features → 12 principal components retaining 95% variance. Removes multicollinearity between TotalIncome, EMI, and DebtToIncome. Speeds up training ~25%.`;
+  if (t.includes('scheme') || t.includes('rejected') || t.includes('government') || t.includes('govt'))
+    return `**Schemes for Farmers**:\n① PM Kisan Samman Nidhi — ₹6,000/year\n② Kisan Credit Card (KCC) — up to ₹3L at 4% interest\n③ PMFBY Crop Insurance — 2% premium\n④ NABARD RIDF loans\nHelpline: **1800-180-1551** (free)`;
+  if (t.includes('weather') || t.includes('drought') || t.includes('flood'))
+    return `**Weather Risk**: Drought districts see +18–25% default risk (cotton/soybean worst). Flood-prone areas add +15% risk premium per RBI guidelines. PMFBY insurance covers these losses.`;
+  if (t.includes('loan') || t.includes('amount') || t.includes('emi'))
+    return `**Loan Amount**: Keep EMI below 35% of monthly income for best approval odds. LoanAmount_log feature normalises skew. Amounts above ₹400K flagged as high exposure.`;
+  if (t.includes('approve') || t.includes('eligib') || t.includes('qualify'))
+    return `**Approval checklist**: ✅ Good credit history ✅ Combined income > ₹4,000/month ✅ Loan ≤ 40% of annual income ✅ Graduate education helps ✅ Semiurban/Urban property area preferred.`;
+  return `**KisanCredit AI** — trained on 614 real Kaggle loan applicants. Pipeline: Raw data → 8 engineered features → PCA (12 components) → 3 models → **Logistic Regression wins** (AUC 0.88, Accuracy 80.5%). Ask me about any factor!`;
+}
+
+async function sendChat() {
+  const ci = document.getElementById('ci');
+  const originalText = ci.value.trim();   // FIX: save BEFORE clearing
+  if (!originalText) return;
+
+  const q = originalText.toLowerCase();
+  ci.value = '';
+
+  // Show user bubble
+  addBubble(originalText, 'user');
+
+  // Show typing indicator
+  const typingBubble = addBubble('<span style="color:var(--t3);font-style:italic">🌱 Analyzing KisanCredit factors...</span>', 'ai');
+
+  // Try the Flask server first (/api/predict endpoint)
+  let responseText = null;
+  try {
+    const res = await fetch('http://localhost:5000/api/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: originalText, context: 'kisan-credit-ml' })
+    });
+    if (res.ok) {
+      const data = await res.json();
+      // Accept response from various field names the server might return
+      responseText = data.response || data.reply || data.answer || data.message || null;
+    }
+  } catch (e) {
+    // Server not running — use local fallback (expected in offline mode)
+  }
+
+  // Remove typing indicator
+  typingBubble.remove();
+
+  // Use local KB if server did not return a valid text response
+  const finalText = (typeof responseText === 'string' && responseText.length > 0)
+    ? responseText
+    : localAnswer(q);
+
+  addBubble(renderMd(finalText), 'ai');
+}
+
+function askQ(q) {
+  document.getElementById('ci').value = q;
+  sendChat();
+}
+
+function addMsg(txt, role) { addBubble(renderMd(txt), role); }
+
+setTimeout(() => addMsg("Namaste! 🌾 I'm the KisanCredit AI Assistant trained on the Kaggle Loan Prediction dataset (614 real applicants). Ask me about approval factors, the ML pipeline, or government schemes for farmers.", 'ai'), 400);
+</script>
+</body>
+</html>

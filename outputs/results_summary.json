@@ -1,0 +1,53 @@
+{
+  "best_model": "LogisticRegression",
+  "dataset_rows": 614,
+  "dataset_source": "Kaggle Loan Prediction Problem",
+  "dataset_path": "data/loan_train.csv",
+  "results": {
+    "RandomForest": {
+      "accuracy": 0.7642,
+      "roc_auc": 0.8424,
+      "pr_auc": 0.9211,
+      "confusion_matrix": [
+        [
+          18,
+          20
+        ],
+        [
+          9,
+          76
+        ]
+      ]
+    },
+    "GradientBoosting": {
+      "accuracy": 0.8049,
+      "roc_auc": 0.8161,
+      "pr_auc": 0.901,
+      "confusion_matrix": [
+        [
+          19,
+          19
+        ],
+        [
+          5,
+          80
+        ]
+      ]
+    },
+    "LogisticRegression": {
+      "accuracy": 0.8049,
+      "roc_auc": 0.8796,
+      "pr_auc": 0.9439,
+      "confusion_matrix": [
+        [
+          25,
+          13
+        ],
+        [
+          11,
+          74
+        ]
+      ]
+    }
+  }
+}
